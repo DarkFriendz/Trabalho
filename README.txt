@@ -13,3 +13,12 @@
 
 o . seguinifica a fazer, X seguinifica feito!
 
+ - Configurações
+
+Estou usando venv para ficar mais facil de editar e visualizar o conteudo
+
+    - Dependencias
+
+    1 - pip install Flask
+    2 - pip install sqlite3
+    
