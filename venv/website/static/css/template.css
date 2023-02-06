@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body div#tarefas {
+    margin: 8mm;
+    margin-top: 15mm;
+    padding: 3mm;
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+}
+
+body div#tarefas::before {
+    content: "Tarefas";
+    font-size: 8mm;
+    position: absolute;
+    top: 10mm;
+    background-color: rgb(255, 255, 255);
+}

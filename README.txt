@@ -1,7 +1,7 @@
  - Website
     
 1 - Criar Web Aplication (Flask) .
-    1 -- Criar pagina index.html .
+    1 -- Criar pagina index.html X
     2 -- Criar botão de adcionar tarefas .
     3 -- Criar tabela .
     4 -- Criar botão de Edit/Delete para cada item .
