@@ -5,9 +5,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <div id="tarefas">
-        <button id="addTarefas">+ Tarefa</button>
-        <table>
+    <div id="interfaceTarefas">
+        <button id="addTarefas" onclick="addTarefas(0)">Adicionar Tarefa</button>
+        <button id="addPesquisar" onclick="pesquisar(0)">Pesquisar</button>
+        <table id="tarefas">
             <tr id="lineTitle">
                 <th id="feito">Feito</th>
                 <th id="title">Titulo</th>
@@ -26,8 +27,8 @@
                 <td id="edit">Vazio</td>
                 <td id="remove">Vazio</td>
             </tr>
-        </table>
+        </table>        
     </div>
 {% endblock %}
 
-{% block scripts %}{% endblock %}
+{% block scripts %} <script src="{{url_for('static', filename='js/tarefas.js')}}"></script> {% endblock %}

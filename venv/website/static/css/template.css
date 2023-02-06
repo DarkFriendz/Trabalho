@@ -14,34 +14,6 @@ body table tr#lineTitle {
     border-left: solid rgb(0, 0, 0) 1mm;
 }
 
-#feito {
-    width: 15mm;
-}
-
-#title {
-    width: 70mm;
-}
-
-#description {
-    width: 80mm;
-}
-
-#createData {
-    width: 35mm;
-}
-
-#pData {
-    width: 35mm;
-}
-
-#edit {
-    width: 15mm;
-}
-
-#remove {
-    width: 15mm;
-}
-
 body table tr {
     display: flex;
     border-left: solid rgb(0, 0, 0) 1mm;

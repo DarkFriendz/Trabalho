@@ -1,4 +1,4 @@
-body div#tarefas {
+body div#interfaceTarefas {
     margin: 8mm;
     margin-top: 15mm;
     padding: 5mm;
@@ -7,7 +7,7 @@ body div#tarefas {
     border-radius: 3mm;
 }
 
-body div#tarefas::before {
+body div#interfaceTarefas::before {
     content: "Tarefas";
     font-size: 8mm;
     padding: 0mm 3mm;
@@ -18,8 +18,12 @@ body div#tarefas::before {
     background-color: rgb(255, 255, 255);
 }
 
-/* Button */
-body div#tarefas button#addTarefas {
+/* Buttons */
+body div#interfaceTarefas button {
+    margin: 0mm 3mm;
+}
+
+body div#interfaceTarefas button#addTarefas {
     padding: 2mm 5mm;
     border-radius: 3mm;
     background-color: rgb(100, 223, 0);
@@ -27,7 +31,7 @@ body div#tarefas button#addTarefas {
     cursor: pointer;
 }
 
-body div#tarefas button#addTarefas:hover {
+body div#interfaceTarefas button#addTarefas:hover {
     padding: 2mm 5mm;
     border-radius: 3mm;
     background-color: rgb(100, 223, 0);
@@ -35,7 +39,52 @@ body div#tarefas button#addTarefas:hover {
     cursor: pointer;
 }
 
-/* Table */
-body div#tarefas table {
+body div#interfaceTarefas button#addPesquisar {
+    padding: 2mm 5mm;
+    border-radius: 3mm;
+    background-color: rgb(0, 90, 223);
+    border: solid rgb(0, 90, 223) 1mm;
+    cursor: pointer;
+}
 
+body div#interfaceTarefas button#addPesquisar:hover {
+    padding: 2mm 5mm;
+    border-radius: 3mm;
+    background-color: rgb(0, 90, 223);
+    border: solid rgb(32, 32, 32) 1mm;
+    cursor: pointer;
+}
+
+
+/* Table */
+body div#interfaceTarefas table {
+
+}
+
+#feito {
+    width: 15mm;
+}
+
+#title {
+    width: 70mm;
+}
+
+#description {
+    width: 80mm;
+}
+
+#createData {
+    width: 35mm;
+}
+
+#pData {
+    width: 35mm;
+}
+
+#edit {
+    width: 15mm;
+}
+
+#remove {
+    width: 15mm;
 }
