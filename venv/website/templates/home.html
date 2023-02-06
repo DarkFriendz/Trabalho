@@ -1,11 +1,32 @@
 {% extends 'template.html' %}
 
-{% block styles %}{% endblock %}
+{% block styles %}<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/tarefas.css')}}">{% endblock %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
     <div id="tarefas">
+        <button id="addTarefas">+ Tarefa</button>
+        <table>
+            <tr id="lineTitle">
+                <th id="feito">Feito</th>
+                <th id="title">Titulo</th>
+                <th id="description">Descrição</th>
+                <th id="createData">Criado em</th>
+                <th id="pData">Prazo</th>
+                <th id="edit">Editar</th>
+                <th id="remove">Deletar</th>
+            </tr>
+            <tr id="vazio">
+                <td id="feito">Vazio</td>
+                <td id="title">Vazio</td>
+                <td id="description">Vazio</td>
+                <td id="createData">Vazio</td>
+                <td id="pData">Vazio</td>
+                <td id="edit">Vazio</td>
+                <td id="remove">Vazio</td>
+            </tr>
+        </table>
     </div>
 {% endblock %}
 

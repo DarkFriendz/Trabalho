@@ -1,0 +1,41 @@
+body div#tarefas {
+    margin: 8mm;
+    margin-top: 15mm;
+    padding: 5mm;
+    padding-top: 13mm;
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+}
+
+body div#tarefas::before {
+    content: "Tarefas";
+    font-size: 8mm;
+    padding: 0mm 3mm;
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 2mm;
+    position: absolute;
+    top: 10mm;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Button */
+body div#tarefas button#addTarefas {
+    padding: 2mm 5mm;
+    border-radius: 3mm;
+    background-color: rgb(100, 223, 0);
+    border: solid rgb(100, 223, 0) 1mm;
+    cursor: pointer;
+}
+
+body div#tarefas button#addTarefas:hover {
+    padding: 2mm 5mm;
+    border-radius: 3mm;
+    background-color: rgb(100, 223, 0);
+    border: solid rgb(32, 32, 32) 1mm;
+    cursor: pointer;
+}
+
+/* Table */
+body div#tarefas table {
+
+}

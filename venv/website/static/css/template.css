@@ -3,18 +3,61 @@ body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-body div#tarefas {
-    margin: 8mm;
-    margin-top: 15mm;
-    padding: 3mm;
-    border: solid rgb(0, 0, 0) 1mm;
-    border-radius: 3mm;
+body table {
+    margin: 8mm auto;
+    margin-bottom: 0mm;
 }
 
-body div#tarefas::before {
-    content: "Tarefas";
-    font-size: 8mm;
-    position: absolute;
-    top: 10mm;
-    background-color: rgb(255, 255, 255);
+body table tr#lineTitle {
+    display: flex;
+    border-top: solid rgb(0, 0, 0) 1mm;
+    border-left: solid rgb(0, 0, 0) 1mm;
+}
+
+#feito {
+    width: 15mm;
+}
+
+#title {
+    width: 70mm;
+}
+
+#description {
+    width: 80mm;
+}
+
+#createData {
+    width: 35mm;
+}
+
+#pData {
+    width: 35mm;
+}
+
+#edit {
+    width: 15mm;
+}
+
+#remove {
+    width: 15mm;
+}
+
+body table tr {
+    display: flex;
+    border-left: solid rgb(0, 0, 0) 1mm;
+}
+
+body table tr th{
+    margin-top: -0.6mm;
+    margin-left: -0.6mm;
+    padding: 2mm;
+    border-right: solid rgb(0, 0, 0) 1mm;
+    border-bottom: solid rgb(0, 0, 0) 1mm;
+}
+body table tr td {
+    margin-top: -0.6mm;
+    margin-left: -0.6mm;
+    padding: 2mm;
+    border-right: solid rgb(0, 0, 0) 1mm;
+    border-bottom: solid rgb(0, 0, 0) 1mm;
 }
