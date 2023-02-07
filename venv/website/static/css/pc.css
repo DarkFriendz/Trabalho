@@ -1,0 +1,134 @@
+body {
+    margin: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 3.2mm;
+}
+
+body div#content {
+    padding: 18mm 5mm;
+}
+
+body div#content button {
+    font-size: 3.2mm;
+}
+
+/* Page Home */
+
+div#interfaceTarefas {
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+    padding: 8mm 5mm;
+}
+
+div#interfaceTarefas::before {
+    content: "Tarefas";
+    font-size: 8mm;
+    font-weight: bold;
+    padding: 0mm 5mm;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+    position: absolute;
+    top: 13mm;
+}
+
+div#interfaceTarefas button {
+    margin: 2mm 5mm;
+    padding: 2mm 5mm;
+    border-radius: 5mm;
+    cursor: pointer;
+}
+
+div#interfaceTarefas input {
+    margin: 2mm 5mm;
+    padding: 2mm 5mm;
+    border-radius: 2mm;
+    cursor: pointer;
+}
+
+div#interfaceTarefas button#addTarefas {
+    background-color: rgb(40, 240, 0);
+    border: solid rgb(40, 240, 0) 1mm;
+}
+
+div#interfaceTarefas button#addTarefas:hover {
+    background-color: rgb(40, 240, 0);
+    border: solid rgb(30, 30, 30) 1mm;
+}
+
+div#interfaceTarefas input#pesquisar {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(0, 0, 0) 1mm;
+}
+
+div#interfaceTarefas table {
+    margin: 0mm auto;
+    margin-top: 5mm;
+}
+
+div#interfaceTarefas table tr#lineTitle {
+    border-top: solid rgb(0, 0, 0) 1mm;
+}
+
+div#interfaceTarefas table tr {
+    display: inline-flex;
+    text-align: center;
+    border-left: solid rgb(0, 0, 0) 1mm;
+    white-space: pre-wrap;
+}
+
+div#interfaceTarefas table tr th {
+    font-weight: bold;
+    border-right: solid rgb(0, 0, 0) 1mm;
+    border-bottom: solid rgb(0, 0, 0) 1mm;
+    padding: 2mm 2mm;
+    margin-top: -1mm;
+    margin-left: -1mm;
+}
+
+div#interfaceTarefas table tr td {
+    font-size: 2.8mm;
+    border-right: solid rgb(0, 0, 0) 1mm;
+    border-bottom: solid rgb(0, 0, 0) 1mm;
+    padding: 2mm 2mm;
+    margin-left: -1mm;
+}
+
+div#interfaceTarefas .feito {
+    width: 10mm;
+}
+
+div#interfaceTarefas .title,
+div#interfaceTarefas .title {
+    width: 70mm;
+}
+
+div#interfaceTarefas .description,
+div#interfaceTarefas .description {
+    width: 100mm;
+}
+
+div#interfaceTarefas .createData,
+div#interfaceTarefas .createData {
+    width: 30mm;
+}
+
+div#interfaceTarefas .pData,
+div#interfaceTarefas .pData {
+    width: 30mm;
+}
+
+div#interfaceTarefas .edit,
+div#interfaceTarefas .edit {
+    width: 13mm;
+}
+
+div#interfaceTarefas .remove,
+div#interfaceTarefas .remove {
+    width: 13mm;
+}
+
+div#interfaceTarefas #vazio {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}

@@ -1,31 +1,29 @@
 {% extends 'template.html' %}
 
-{% block styles %}<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/tarefas.css')}}">{% endblock %}
-
 {% block title %}Home{% endblock %}
 
 {% block content %}
     <div id="interfaceTarefas">
         <button id="addTarefas" onclick="addTarefas(0)">Adicionar Tarefa</button>
-        <button id="addPesquisar" onclick="pesquisar(0)">Pesquisar</button>
+        <input type="text" id="pesquisar" placeholder="Pesquisar"/>
         <table id="tarefas">
             <tr id="lineTitle">
-                <th id="feito">Feito</th>
-                <th id="title">Titulo</th>
-                <th id="description">Descrição</th>
-                <th id="createData">Criado em</th>
-                <th id="pData">Prazo</th>
-                <th id="edit">Editar</th>
-                <th id="remove">Deletar</th>
+                <th class="feito">Feito</th>
+                <th class="title">Titulo</th>
+                <th class="description">Descrição</th>
+                <th class="createData">Criado em</th>
+                <th class="pData">Prazo</th>
+                <th class="edit">Editar</th>
+                <th class="remove">Deletar</th>
             </tr>
             <tr id="vazio">
-                <td id="feito">Vazio</td>
-                <td id="title">Vazio</td>
-                <td id="description">Vazio</td>
-                <td id="createData">Vazio</td>
-                <td id="pData">Vazio</td>
-                <td id="edit">Vazio</td>
-                <td id="remove">Vazio</td>
+                <td class="feito">Vazio</td>
+                <td class="title">Vazio</td>
+                <td class="description">Vazio</td>
+                <td class="createData">Vazio</td>
+                <td class="pData">Vazio</td>
+                <td class="edit">Vazio</td>
+                <td class="remove">Vazio</td>
             </tr>
         </table>        
     </div>

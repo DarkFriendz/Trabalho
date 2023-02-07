@@ -1,5 +1,6 @@
 #Assets
 from flask import Flask, render_template
+import sqlite3 
 
 #Class Website
 class web():
@@ -11,6 +12,9 @@ class web():
         #Secret Key Website
         self.website.config["secret_key"] = config[0]
         self.website.secret_key = config[0]
+
+        #Datebase
+        self.db = sqlite3.connect
 
     def run(self):
         

@@ -3,7 +3,11 @@
 1 - Criar Web Aplication (Flask) .
     1 -- Criar pagina index.html X
     2 -- Criar botão de adcionar tarefas .
+        -- button Adicionar tarefas X
+        -- leite de add tarefas .
     3 -- Criar tabela .
+        -- HTML Tabela X
+        -- Function tabelas .
     4 -- Criar botão de Edit/Delete para cada item .
     5 -- Adicionar item a tabela .
 
