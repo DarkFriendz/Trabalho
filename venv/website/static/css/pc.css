@@ -100,12 +100,12 @@ div#interfaceTarefas .feito {
 
 div#interfaceTarefas .title,
 div#interfaceTarefas .title {
-    width: 70mm;
+    width: 55mm;
 }
 
 div#interfaceTarefas .description,
 div#interfaceTarefas .description {
-    width: 100mm;
+    width: 80mm;
 }
 
 div#interfaceTarefas .createData,
@@ -115,6 +115,11 @@ div#interfaceTarefas .createData {
 
 div#interfaceTarefas .pData,
 div#interfaceTarefas .pData {
+    width: 30mm;
+}
+
+div#interfaceTarefas .eData,
+div#interfaceTarefas .eData {
     width: 30mm;
 }
 
