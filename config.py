@@ -1,3 +1,4 @@
 config = [
-    "SecretKey123"
+    "SecretKey123",
+    "database/Database.db"
 ]

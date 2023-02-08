@@ -1,6 +1,6 @@
 #Assets
 from flask import Flask, render_template
-import sqlite3 
+import sqlite3 as sql
 
 #Class Website
 class web():
@@ -13,15 +13,20 @@ class web():
         self.website.config["secret_key"] = config[0]
         self.website.secret_key = config[0]
 
-        #Datebase
-        self.db = sqlite3.connect
+        #Config
+        self.config = config
 
     def run(self):
         
         #Index Page
         @self.website.route('/')
         def index():
-            return render_template('home.html')
+            con = sql.connect(self.config[1])
+            db = con.cursor()
+
+            db.execute("SELECT * FROM tarefas")
+
+            return render_template('home.html', db=db.fetchall())
 
         #Run Website
         self.website.run(debug=True)

@@ -5,6 +5,11 @@
 {% block content %}
     <div id="interfaceTarefas">
         <button id="addTarefas" onclick="addTarefas(0)">Adicionar Tarefa</button>
+        <form action="/execute/add" method="POST" id="addForm">
+            <input type="text" name="title">
+            <textarea name="description"></textarea>
+            <input type="datetime-local" name="data">
+        </form>
         <input type="text" id="pesquisar" placeholder="Pesquisar"/>
         <table id="tarefas">
             <tr id="lineTitle">
@@ -17,17 +22,45 @@
                 <th class="edit">Editar</th>
                 <th class="remove">Deletar</th>
             </tr>
-            <tr id="vazio">
-                <td class="feito">Vazio</td>
-                <td class="title">Vazio</td>
-                <td class="description">Vazio</td>
-                <td class="createData">Vazio</td>
-                <td class="pData">Vazio</td>
-                <td class="eData">Editado em</td>
-                <td class="edit">Vazio</td>
-                <td class="remove">Vazio</td>
-            </tr>
-        </table>        
+            {% if db %}  
+                {% for line in db %}
+                    {% if line[3] == 0 %}
+                        <tr>
+                            <td class="feito"><input type="checkbox" name="checkbox{{line[0]}}" id="checkbox"></td>
+                            <td class="title">{{line[1]}}</td>
+                            <td class="description">{{line[2]}}</td>
+                            <td class="createData">{{line[4]}}</td>
+                            <td class="pData">{{line[5]}}</td>
+                            <td class="eData">{{line[6]}}</td>
+                            <td class="edit"></td>
+                            <td class="remove"></td>
+                        </tr>
+                    {% else %}
+                        <tr class="lineFeito">
+                            <td class="feito"><input type="checkbox" name="checkbox{{line[0]}}" id="checkbox"></td>
+                            <td class="title">{{line[1]}}</td>
+                            <td class="description">{{line[2]}}</td>
+                            <td class="createData">{{line[4]}}</td>
+                            <td class="pData">{{line[5]}}</td>
+                            <td class="eData">{{line[6]}}</td>
+                            <td class="edit">Feito</td>
+                            <td class="remove"></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <tr id="vazio">
+                    <td class="feito">Vazio</td>
+                    <td class="title">Vazio</td>
+                    <td class="description">Vazio</td>
+                    <td class="createData">Vazio</td>
+                    <td class="pData">Vazio</td>
+                    <td class="eData">Editado em</td>
+                    <td class="edit">Vazio</td>
+                    <td class="remove">Vazio</td>
+                </tr>
+            {% endif %}
+        </table>
     </div>
 {% endblock %}
 
