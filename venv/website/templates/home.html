@@ -27,35 +27,35 @@
                             {% if line[7] == 0 %}
                                 <tr>
                                     <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td><button type="submit" name="Form" value=3{{line[0]}}>Editar</button></td>
+                                    <td id="{{line[0]}}T">{{line[1]}}</td>
+                                    <td id="{{line[0]}}D">{{line[2]}}</td>
+                                    <td>{{line[4]}}</td>
+                                    <td id="{{line[0]}}P">{{line[5]}}</td>
+                                    <td>{{line[6]}}</td>
+                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                     <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% else %}
                                 <tr id="lineExpired">
                                     <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td>Vazio</td>
-                                    <td><button type="submit" name="Form" value=3{{line[0]}}>Editar</button></td>
+                                    <td id="{{line[0]}}T">{{line[1]}}</td>
+                                    <td id="{{line[0]}}D">{{line[2]}}</td>
+                                    <td>{{line[4]}}</td>
+                                    <td id="{{line[0]}}P">{{line[5]}}</td>
+                                    <td>{{line[6]}}</td>
+                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                     <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% endif %}
                         {% else %}
                             <tr id="lineFeita">
                                 <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                <td>Vazio</td>
-                                <td>Vazio</td>
-                                <td>Vazio</td>
-                                <td>Vazio</td>
-                                <td>Vazio</td>
-                                <td><button type="submit" name="Form" value=3{{line[0]}}>Editar</button></td>
+                                <td id="{{line[0]}}T">{{line[1]}}</td>
+                                <td id="{{line[0]}}D">{{line[2]}}</td>
+                                <td>{{line[4]}}</td>
+                                <td id="{{line[0]}}P">{{line[5]}}</td>
+                                <td>{{line[6]}}</td>
+                                <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                 <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                             </tr>
                         {% endif %}
@@ -82,6 +82,15 @@
             <span class="validity"></span>
             <button type="button" id="closeForm">Cancelar</button>
             <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
+        </form>
+        <form id="editForm" action="/execute/" method="POST">
+            <input type="hidden" name="Id" id="editId" value="">
+            <input type="text" name="Title" value="Vazio" id="editTitle" required>
+            <textarea name="Description" id="editDescription" required></textarea>
+            <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
+            <span class="validity"></span>
+            <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
+            <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
         </form>
     </div>
 {% endblock %}

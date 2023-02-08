@@ -31,6 +31,26 @@ function addTarefas(x) {
     }
 }
 
+function editTarefa(x, id) {
+    const form = document.getElementById("editForm")
+    if (x == 0) {
+        document.getElementById("editId").value = id
+        document.getElementById("editTitle").value = document.getElementById(id+"T").textContent
+        document.getElementById("editDescription").value = document.getElementById(id+"D").textContent
+        prazo = document.getElementById(id+"P").textContent.replace("/", "-")
+        prazo = prazo.replace("/", "-")
+        prazo = prazo.replace(" ", "T")
+        document.getElementById("editPrazo").value = prazo
+        //form.style.display = "Block"
+    } else {
+        document.getElementById("editId").value = ""
+        document.getElementById("editTitle").value = "Vazio"
+        document.getElementById("editDescription").value = "Vazio"
+        document.getElementById("editPrazo").value = ""
+        //form.style.display = "none"
+    }
+}
+
 function pesquisar(x) {
     alert(x)
 }

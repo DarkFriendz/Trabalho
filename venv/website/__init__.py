@@ -83,7 +83,18 @@ class web():
                 con.commit()
                 con.close()
             elif request.form['Form'][0] == "3":
-                return "Editar"
+                data = datetime.now()
+                data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
+                
+                prazo = request.form['Prazo'].replace("-", "/")
+                prazo = prazo.replace("T", " ")
+                prazo = prazo+":00"
+                
+                con = sql.connect(self.config[1])
+                DBW = con.cursor()
+                DBW.execute(f"UPDATE tarefas set Title='{request.form['Title']}', Description='{request.form['Description']}', Done=0, Prazo='{prazo}', Edit='{data}' WHERE Id={request.form['Id']}")
+                con.commit()
+                con.close()
             elif request.form['Form'][0] == "4":
                 con = sql.connect(self.config[1])
                 DBW = con.cursor()
