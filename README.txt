@@ -1,19 +1,21 @@
  - Website
     
-1 - Criar Web Aplication (Flask) .
+1 - Criar Web Aplication (Flask) X
     1 -- Criar pagina index.html X
-    2 -- Criar botão de adcionar tarefas .
+    2 -- Criar botão de adcionar tarefas X
         -- button Adicionar tarefas X
-        -- leite de add tarefas .
-    3 -- Criar tabela .
+        -- Interface de add tarefas X
+    3 -- Criar tabela X
         -- HTML Tabela X
-        -- Function tabelas .
-    4 -- Criar botão de Edit/Delete para cada item .
-    5 -- Adicionar item a tabela .
+        -- Function tabelas X
+    4 -- Criar botão de Edit/Delete para cada item X
+    5 -- Adicionar item a tabela X
 
-2 - Criar Banco de dados (SQLite) .
-    1 -- Criar colunas = id, title, description, done, due_date, created_at, updated_at .
-    2 -- Criar class DB in connect.py .
+2 - Criar Banco de dados (SQLite) X
+    1 -- Criar colunas = id, title, description, done, due_date, created_at, updated_at X
+    2 -- Criar class DB in connect.py X
+
+3 - Criar Style PC/Mobile .
 
 o . seguinifica a fazer, X seguinifica feito!
 
