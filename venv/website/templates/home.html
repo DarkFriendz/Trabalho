@@ -4,70 +4,86 @@
 
 {% block content %}
     <div id="interfaceTarefas">
-        <button id="addTarefas" onclick="addTarefas(0)">Adicionar Tarefa</button>
-        <form action="/execute/add" method="POST" id="addForm">
-            <button type="button" id="closeTarefas" onclick="addTarefas(1)">X</button>
-            <div>
-                <input type="text" name="title">
-                <br/>
-                <br/>
-                <textarea name="description"></textarea>
-                <br/>
-                <br/>
-                <input type="datetime-local" name="data">
-            </div>
-        </form>
-        <input type="text" id="pesquisar" placeholder="Pesquisar"/>
-        <table id="tarefas">
-            <tr id="lineTitle">
-                <th class="feito">Feito</th>
-                <th class="title">Titulo</th>
-                <th class="description">Descrição</th>
-                <th class="createData">Criado em</th>
-                <th class="pData">Prazo para</th>
-                <th class="eData">Editado em</th>
-                <th class="edit">Editar</th>
-                <th class="remove">Deletar</th>
-            </tr>
-            {% if db %}  
-                {% for line in db %}
-                    {% if line[3] == 0 %}
-                        <tr>
-                            <td class="feito"><input type="checkbox" name="checkbox{{line[0]}}" id="checkbox"></td>
-                            <td class="title">{{line[1]}}</td>
-                            <td class="description">{{line[2]}}</td>
-                            <td class="createData">{{line[4]}}</td>
-                            <td class="pData">{{line[5]}}</td>
-                            <td class="eData">{{line[6]}}</td>
-                            <td class="edit"></td>
-                            <td class="remove"></td>
-                        </tr>
-                    {% else %}
-                        <tr class="lineFeito">
-                            <td class="feito"><input type="checkbox" name="checkbox{{line[0]}}" id="checkbox"></td>
-                            <td class="title">{{line[1]}}</td>
-                            <td class="description">{{line[2]}}</td>
-                            <td class="createData">{{line[4]}}</td>
-                            <td class="pData">{{line[5]}}</td>
-                            <td class="eData">{{line[6]}}</td>
-                            <td class="edit">Feito</td>
-                            <td class="remove"></td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <tr id="vazio">
-                    <td class="feito">Vazio</td>
-                    <td class="title">Vazio</td>
-                    <td class="description">Vazio</td>
-                    <td class="createData">Vazio</td>
-                    <td class="pData">Vazio</td>
-                    <td class="eData">Editado em</td>
-                    <td class="edit">Vazio</td>
-                    <td class="remove">Vazio</td>
+        <form id="form" action="/execute/" method="POST">
+            <input type="text" placeholder="Pesquisar">
+            <button type="button">Adcionar Tarefa</button>
+            <button type="submit" name="Form" value=0>Terminar Tarefas</button>
+            <button type="submit" name="Form" value=1>Deletar Tarefas</button>
+
+            <table>
+                <tr>
+                    <th>Selecionar</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Criado em</th>
+                    <th>Prazo</th>
+                    <th>Editado</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
                 </tr>
-            {% endif %}
-        </table>
+                {% if list %}
+                    {% for line in list %}
+                        {% if line[3] == 0 %}
+                            {% if line[7] == 0 %}
+                                <tr>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <input type="hidden" name="id" value="{{line[0]}}">
+                                    <td><button type="submit" name="Form" value=3{{line[0]}}>Editar</button></td>
+                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
+                                </tr>
+                            {% else %}
+                                <tr id="lineExpired">
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <td>Vazio</td>
+                                    <input type="hidden" name="id" value="{{line[0]}}">
+                                    <td><button type="submit" name="Form" value=3{{line[0]}}>Editar</button></td>
+                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
+                                </tr>
+                            {% endif %}
+                        {% else %}
+                            <tr id="lineFeita">
+                                <td>Vazio</td>
+                                <td>Vazio</td>
+                                <td>Vazio</td>
+                                <td>Vazio</td>
+                                <td>Vazio</td>
+                                <td>Vazio</td>
+                                <input type="hidden" name="id" value="{{line[0]}}">
+                                <td><button type="submit" name="Form" value=3>Editar</button></td>
+                                <td><button type="submit" name="Form" value=4>Deletar</button></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                        <td>Vazio</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </form>
+        <form id="addForm" action="/execute/" method="POST">
+            <input type="text" placeholder="Titulo">
+            <textarea name="description" id="textDescription"></textarea>
+            <input type="datetime-local" name="prazo" id="date" min="{{dataMin}}" max="{{dataMax}}">
+            <button type="button" id="closeForm">Cancelar</button>
+            <button type="submit" id="addForm" name="Form" value="5">Adicionar</button>
+        </form>
     </div>
 {% endblock %}
 
