@@ -103,6 +103,35 @@ div#interfaceTarefas form#addForm {
     display: none;
 }
 
+div#interfaceTarefas form#addForm button#closeTarefas {
+    position: absolute;
+}
+
+div#interfaceTarefas form#addForm div {
+    width: 75%;
+    margin: 15mm auto;
+    margin-bottom: 0mm;
+    padding: 15mm 8mm;
+    padding-bottom: 0mm;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+    text-align: center;
+}
+
+div#interfaceTarefas form#addForm div::before {
+    content: "Adcionar Tarefa";
+    font-size: 8mm;
+    font-weight: bold;
+    padding: 0mm 5mm;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(0, 0, 0) 1mm;
+    border-radius: 3mm;
+    position: absolute;
+    top: 10mm;
+}
+
+
 div#interfaceTarefas input#pesquisar {
     background-color: rgb(255, 255, 255);
     border: solid rgb(0, 0, 0) 1mm;

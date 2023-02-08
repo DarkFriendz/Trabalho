@@ -6,9 +6,16 @@
     <div id="interfaceTarefas">
         <button id="addTarefas" onclick="addTarefas(0)">Adicionar Tarefa</button>
         <form action="/execute/add" method="POST" id="addForm">
-            <input type="text" name="title">
-            <textarea name="description"></textarea>
-            <input type="datetime-local" name="data">
+            <button type="button" id="closeTarefas" onclick="addTarefas(1)">X</button>
+            <div>
+                <input type="text" name="title">
+                <br/>
+                <br/>
+                <textarea name="description"></textarea>
+                <br/>
+                <br/>
+                <input type="datetime-local" name="data">
+            </div>
         </form>
         <input type="text" id="pesquisar" placeholder="Pesquisar"/>
         <table id="tarefas">
