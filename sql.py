@@ -4,8 +4,6 @@ from datetime import datetime
 data = datetime.now()
 data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
 
-print(data)
-
 con = sql.connect('database/Database.db')
 
 DBW = con.cursor()

@@ -50,3 +50,13 @@ div#interfaceTarefas input#checkbox {
     margin: 0mm auto;
     padding: 0mm;
 }
+
+input:invalid + span::after {
+    content: "✖";
+    padding-left: 5px;
+  }
+  
+  input:valid + span::after {
+    content: "✓";
+    padding-left: 5px;
+  }

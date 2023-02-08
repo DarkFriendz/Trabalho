@@ -41,17 +41,16 @@ class web():
                     lines.append([dbList[0], dbList[1], dbList[2], dbList[3], dbList[4], dbList[5], dbList[6], 0])
 
             dataMin = datetime.now()+timedelta(days=1)
-            dataMin = datetime.strftime(dataMin, "%Y-%m-%dT%H:%M:%S")
+            dataMin = datetime.strftime(dataMin, "%Y-%m-%dT00:00:00")
 
             dataMax = datetime.now()+timedelta(weeks=4)
-            dataMax = datetime.strftime(dataMax, "%Y-%m-%dT%H:%M:%S")
+            dataMax = datetime.strftime(dataMax, "%Y-%m-%dT23:59:00")
 
             return render_template('home.html', list=lines, dataMin=dataMin, dataMax=dataMax)
 
         #Execute Page
         @self.website.route('/execute/', methods=["POST"])
         def execute():
-            print(request.form['Select'])
             if request.form['Form'][0] == "0":
                 select = request.form["Select"].split(":")
                 select = select[:-1]
@@ -71,7 +70,18 @@ class web():
                 con.commit()
                 con.close()
             elif request.form['Form'][0] == "2":
-                return "Adcionar Tarefa"
+                data = datetime.now()
+                data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
+                
+                prazo = request.form['Prazo'].replace("-", "/")
+                prazo = prazo.replace("T", " ")
+                prazo = prazo+":00"
+
+                con = sql.connect(self.config[1])
+                DBW = con.cursor()
+                DBW.execute(f"INSERT INTO tarefas (Title, Description, Done, Data, Prazo, Edit) VALUES ('{request.form['Title']}', '{request.form['Description']}', 0, '{data}', '{prazo}', null)")
+                con.commit()
+                con.close()
             elif request.form['Form'][0] == "3":
                 return "Editar"
             elif request.form['Form'][0] == "4":

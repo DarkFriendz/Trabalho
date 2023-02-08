@@ -76,9 +76,10 @@
             <input type="hidden" name="Select" id="Select" value="None">
         </form>
         <form id="addForm" action="/execute/" method="POST">
-            <input type="text" placeholder="Titulo">
-            <textarea name="description" id="textDescription"></textarea>
-            <input type="datetime-local" name="prazo" id="date" min="{{dataMin}}" max="{{dataMax}}">
+            <input type="text" name="Title" placeholder="Titulo" required>
+            <textarea name="Description" id="textDescription" required></textarea>
+            <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
+            <span class="validity"></span>
             <button type="button" id="closeForm">Cancelar</button>
             <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
         </form>
