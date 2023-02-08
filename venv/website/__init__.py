@@ -61,17 +61,27 @@ class web():
                     DBW.execute(f"UPDATE tarefas set Done=1 WHERE Id={line}")
                 con.commit()
                 con.close()
-                return redirect("/")
             elif request.form['Form'][0] == "1":
-                return "Deletar Tarefa"
+                select = request.form["Select"].split(":")
+                select = select[:-1]
+                con = sql.connect(self.config[1])
+                DBW = con.cursor()
+                for line in select:
+                    DBW.execute(f"DELETE FROM tarefas WHERE Id={line}")
+                con.commit()
+                con.close()
             elif request.form['Form'][0] == "2":
                 return "Adcionar Tarefa"
             elif request.form['Form'][0] == "3":
                 return "Editar"
             elif request.form['Form'][0] == "4":
-                return "Remover"
-            else:
-                return redirect("/")
+                con = sql.connect(self.config[1])
+                DBW = con.cursor()
+                DBW.execute(f"DELETE FROM tarefas WHERE Id={request.form['Form'][1]}")
+                con.commit()
+                con.close()
+
+            return redirect("/")
 
         #Run Website
         self.website.run(debug=True)
