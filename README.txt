@@ -10,6 +10,7 @@
         -- Function tabelas X
     4 -- Criar botão de Edit/Delete para cada item X
     5 -- Adicionar item a tabela X
+    6 -- Criar filtros X
 
 2 - Criar Banco de dados (SQLite) X
     1 -- Criar colunas = id, title, description, done, due_date, created_at, updated_at X
