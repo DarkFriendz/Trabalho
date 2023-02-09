@@ -112,18 +112,6 @@ Filter.addEventListener("change", function() {
                 }
             }
         break;
-        case "7":
-            Pesquisar.style.display = "None"
-            PesquisarDate.style.display = "None"
-            for (line in all) {
-                if (line != 0) {
-                    select = document.getElementById(line+"L")
-                    if (select.className != "lineImportante") {
-                        select.style.display = "None"
-                    }
-                }
-            }
-        break;
         default:
             Pesquisar.style.display = "block"
             PesquisarDate.style.display = "None"

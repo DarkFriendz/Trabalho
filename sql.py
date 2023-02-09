@@ -3,6 +3,7 @@ from datetime import datetime
 
 data = datetime.now()
 data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
+data = "2023/01/01 10:10:10"
 
 con = sql.connect('database/Database.db')
 
