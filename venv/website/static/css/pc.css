@@ -2,12 +2,38 @@ body {
     margin: 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 3.2mm;
+    background-color: rgb(230, 230, 230);
 }
 
 body div#content {
     padding: 18mm 5mm;
 }
 
-body div#content button {
-    font-size: 3.2mm;
+/* Page Tarefas */
+
+div#interfaceTarefas {
+    padding: 8mm 5mm;
+    padding-top: 5mm;
+    background-color: rgb(0, 133, 170, 0.3);
+    border: solid rgba(0, 200, 255,0.5) 0.2mm;
+    
+}
+
+div#interfaceTarefas::before {
+    content: "Tarefas";
+    font-size: 7mm;
+    padding: 2mm 5mm;
+    background-color: rgb(230, 230, 230);
+    border: solid rgba(0, 200, 255,0.5) 0.2mm;
+    border-radius: 3mm;
+    position: fixed;
+    top: 11mm;
+}
+
+div#interfaceTarefas input,
+div#interfaceTarefas select,
+div#interfaceTarefas textarea,
+div#interfaceTarefas button {
+    background-color: rgb(230, 230, 230);
+    border: solid rgba(0, 200, 255,0.5) 0.2mm;
 }
