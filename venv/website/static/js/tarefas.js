@@ -51,6 +51,134 @@ function editTarefa(x, id) {
     }
 }
 
-function pesquisar(x) {
-    alert(x)
-}
+const Filter = document.getElementById("Filter")
+const Pesquisar = document.getElementById("Pesquisar")
+const PesquisarDate = document.getElementById("PesquisarDate")
+
+Filter.addEventListener("change", function() {
+    const all = document.getElementById("All").value.split(":")
+    for (line in all) {
+        if (line != 0) {
+            select = document.getElementById(line+"L")
+            select.style.display = "block"
+        }
+    }
+
+    Pesquisar.value = ""
+    PesquisarDate.value = ""
+
+    switch (Filter.value) {
+        case "0":
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+        case "1":
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+        case "2":
+            Pesquisar.style.display = "None"
+            PesquisarDate.style.display = "block"
+        break;
+        case "3":
+            Pesquisar.style.display = "None"
+            PesquisarDate.style.display = "block"
+        break;
+        case "4":
+            Pesquisar.style.display = "None"
+            PesquisarDate.style.display = "block"
+        break;
+        case "5":
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+        case "6":
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+        case "7":
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+        default:
+            Pesquisar.style.display = "block"
+            PesquisarDate.style.display = "None"
+        break;
+    }
+})
+
+Pesquisar.addEventListener("input", function () {
+    const all = document.getElementById("All").value.split(":")
+    if (Pesquisar.value == "") {
+        for (line in all) {
+            if (line != 0) {
+                select = document.getElementById(line+"L")
+                select.style.display = "block"
+            }
+        }
+    } else {
+        for (line in all) {
+            if (line != 0) {
+                select = document.getElementById(line+"L").value.toLowerCase()
+                value = Pesquisar.value.split(select)
+            }
+        }
+    }
+})
+
+PesquisarDate.addEventListener("input", function () {
+    const all = document.getElementById("All").value.split(":")
+    switch (Filter.value) {
+        case '2':
+            for (line in all) {
+                if (line != 0) {
+                    select = PesquisarDate.value.split("T")
+                    select = select[0].replace("-", "/")
+                    select = select.replace("-", "/")
+                    value = document.getElementById(line+"C").textContent.split(" ")
+                    if (select != value[0]) {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "none"
+                    } else {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "block"
+                    }
+                }
+            }
+        break;
+        case '3':
+            for (line in all) {
+                if (line != 0) {
+                    select = PesquisarDate.value.split("T")
+                    select = select[0].replace("-", "/")
+                    select = select.replace("-", "/")
+                    value = document.getElementById(line+"P").textContent.split(" ")
+                    if (select != value[0]) {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "none"
+                    } else {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "block"
+                    }
+                }
+            }
+        break;
+        case '4':
+            for (line in all) {
+                if (line != 0) {
+                    select = PesquisarDate.value.split("T")
+                    select = select[0].replace("-", "/")
+                    select = select.replace("-", "/")
+                    value = document.getElementById(line+"E").textContent.split(" ")
+                    if (select != value[0]) {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "none"
+                    } else {
+                        select = document.getElementById(line+"L")
+                        select.style.display = "block"
+                    }
+                }
+            }
+        break;
+    }
+})

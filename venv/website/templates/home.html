@@ -4,8 +4,22 @@
 
 {% block content %}
     <div id="interfaceTarefas">
+        <br>
+        <input type="datetime-local" name="PesquisarDate" id="PesquisarDate" style="display: None;">
+        <input type="search" placeholder="Pesquisar" id="Pesquisar" style="display: flex;">
+        <select name="Filter" id="Filter">
+            <option value="0">Titulo</option>
+            <option value="1">Descrição</option>
+            <option value="2">Criado em</option>
+            <option value="3">Prazo</option>
+            <option value="4">Editado</option>
+            <option value="5">Feito</option>
+            <option value="6">Expidafo</option>
+            <option value="7">Importante</option>
+        </select>
+        <br>
+        <br>
         <form id="form" action="/execute/" method="POST">
-            <input type="text" placeholder="Pesquisar">
             <button type="button">Adcionar Tarefa</button>
             <button type="submit" name="Form" value=0>Terminar Tarefas</button>
             <button type="submit" name="Form" value=1>Deletar Tarefas</button>
@@ -25,36 +39,36 @@
                     {% for line in list %}
                         {% if line[3] == 0 %}
                             {% if line[7] == 0 %}
-                                <tr>
+                                <tr id="{{line[0]}}L">
                                     <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
                                     <td id="{{line[0]}}T">{{line[1]}}</td>
                                     <td id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td>{{line[4]}}</td>
+                                    <td id="{{line[0]}}C">{{line[4]}}</td>
                                     <td id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td>{{line[6]}}</td>
+                                    <td id="{{line[0]}}E">{{line[6]}}</td>
                                     <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                     <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% else %}
-                                <tr id="lineExpired">
+                                <tr id="{{line[0]}}L" class="lineExpired">
                                     <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
                                     <td id="{{line[0]}}T">{{line[1]}}</td>
                                     <td id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td>{{line[4]}}</td>
+                                    <td id="{{line[0]}}C">{{line[4]}}</td>
                                     <td id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td>{{line[6]}}</td>
+                                    <td id="{{line[0]}}E">{{line[6]}}</td>
                                     <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                     <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% endif %}
                         {% else %}
-                            <tr id="lineFeita">
+                            <tr id="{{line[0]}}L" class="lineFeita">
                                 <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
                                 <td id="{{line[0]}}T">{{line[1]}}</td>
                                 <td id="{{line[0]}}D">{{line[2]}}</td>
-                                <td>{{line[4]}}</td>
+                                <td id="{{line[0]}}C">{{line[4]}}</td>
                                 <td id="{{line[0]}}P">{{line[5]}}</td>
-                                <td>{{line[6]}}</td>
+                                <td id="{{line[0]}}E">{{line[6]}}</td>
                                 <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
                                 <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                             </tr>
@@ -74,6 +88,7 @@
                 {% endif %}
             </table>
             <input type="hidden" name="Select" id="Select" value="None">
+            <input type="hidden" name="All" id="All" value="{% for line in list %}{{line[0]}}:{% endfor %}">
         </form>
         <form id="addForm" action="/execute/" method="POST">
             <input type="text" name="Title" placeholder="Titulo" required>
