@@ -89,16 +89,40 @@ Filter.addEventListener("change", function() {
             PesquisarDate.style.display = "block"
         break;
         case "5":
-            Pesquisar.style.display = "block"
+            Pesquisar.style.display = "None"
             PesquisarDate.style.display = "None"
+            for (line in all) {
+                if (line != 0) {
+                    select = document.getElementById(line+"L")
+                    if (select.className != "lineFeita") {
+                        select.style.display = "None"
+                    }
+                }
+            }
         break;
         case "6":
-            Pesquisar.style.display = "block"
+            Pesquisar.style.display = "None"
             PesquisarDate.style.display = "None"
+            for (line in all) {
+                if (line != 0) {
+                    select = document.getElementById(line+"L")
+                    if (select.className != "lineExpired") {
+                        select.style.display = "None"
+                    }
+                }
+            }
         break;
         case "7":
-            Pesquisar.style.display = "block"
+            Pesquisar.style.display = "None"
             PesquisarDate.style.display = "None"
+            for (line in all) {
+                if (line != 0) {
+                    select = document.getElementById(line+"L")
+                    if (select.className != "lineImportante") {
+                        select.style.display = "None"
+                    }
+                }
+            }
         break;
         default:
             Pesquisar.style.display = "block"
