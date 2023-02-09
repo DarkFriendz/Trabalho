@@ -121,20 +121,37 @@ Filter.addEventListener("change", function() {
 
 Pesquisar.addEventListener("input", function () {
     const all = document.getElementById("All").value.split(":")
-    if (Pesquisar.value == "") {
-        for (line in all) {
-            if (line != 0) {
-                select = document.getElementById(line+"L")
-                select.style.display = "block"
+    switch (Filter.value) {
+        case '0':
+            value = Pesquisar.value.toLowerCase()
+            for (line in all) {
+                if (line != 0) {
+                    select = document.getElementById(line+"T").textContent.toLowerCase()
+                    select = select.split(value)
+                    if (!select[1]) {
+                        document.getElementById(line+"L").style.display = "None"
+                    }
+                    else {
+                        document.getElementById(line+"L").style.display = "Block"
+                    }
+                }
             }
-        }
-    } else {
-        for (line in all) {
-            if (line != 0) {
-                select = document.getElementById(line+"L").value.toLowerCase()
-                value = Pesquisar.value.split(select)
+        break;
+        case '1':
+            value = Pesquisar.value.toLowerCase()
+            for (line in all) {
+                if (line != 0) {
+                    select = document.getElementById(line+"D").textContent.toLowerCase()
+                    select = select.split(value)
+                    if (!select[1]) {
+                        document.getElementById(line+"L").style.display = "None"
+                    }
+                    else {
+                        document.getElementById(line+"L").style.display = "Block"
+                    }
+                }
             }
-        }
+        break;
     }
 })
 
