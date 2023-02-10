@@ -6,7 +6,6 @@ function lineSelect(checkbox, id) {
         } else {
             Select.value = Select.value+id+":"
         }
-        console.log(Select.value)
     } else {
         if (Select.value[1] != 'undefined') {
             value = Select.value.replace(id+".", "")
@@ -15,7 +14,6 @@ function lineSelect(checkbox, id) {
             } else {
                 Select.value = value
             }
-            console.log(Select.value)
         } else {
             Select.value = "None"
         }
@@ -41,13 +39,13 @@ function editTarefa(x, id) {
         prazo = prazo.replace("/", "-")
         prazo = prazo.replace(" ", "T")
         document.getElementById("editPrazo").value = prazo
-        //form.style.display = "Block"
+        form.style.display = "block"
     } else {
         document.getElementById("editId").value = ""
         document.getElementById("editTitle").value = "Vazio"
         document.getElementById("editDescription").value = "Vazio"
         document.getElementById("editPrazo").value = ""
-        //form.style.display = "none"
+        form.style.display = "none"
     }
 }
 
@@ -60,7 +58,7 @@ Filter.addEventListener("change", function() {
     for (line in all) {
         if (line != 0) {
             select = document.getElementById(line+"L")
-            select.style.display = "block"
+            select.style.display = "table-row"
         }
     }
 
@@ -132,7 +130,7 @@ Pesquisar.addEventListener("input", function () {
                         document.getElementById(line+"L").style.display = "None"
                     }
                     else {
-                        document.getElementById(line+"L").style.display = "Block"
+                        document.getElementById(line+"L").style.display = "table-row"
                     }
                 }
             }
@@ -147,7 +145,7 @@ Pesquisar.addEventListener("input", function () {
                         document.getElementById(line+"L").style.display = "None"
                     }
                     else {
-                        document.getElementById(line+"L").style.display = "Block"
+                        document.getElementById(line+"L").style.display = "table-row"
                     }
                 }
             }
@@ -170,7 +168,7 @@ PesquisarDate.addEventListener("input", function () {
                         select.style.display = "none"
                     } else {
                         select = document.getElementById(line+"L")
-                        select.style.display = "block"
+                        select.style.display = "table-row"
                     }
                 }
             }
@@ -187,7 +185,7 @@ PesquisarDate.addEventListener("input", function () {
                         select.style.display = "none"
                     } else {
                         select = document.getElementById(line+"L")
-                        select.style.display = "block"
+                        select.style.display = "table-row"
                     }
                 }
             }
@@ -204,7 +202,7 @@ PesquisarDate.addEventListener("input", function () {
                         select.style.display = "none"
                     } else {
                         select = document.getElementById(line+"L")
-                        select.style.display = "block"
+                        select.style.display = "table-row"
                     }
                 }
             }
