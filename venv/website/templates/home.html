@@ -91,13 +91,14 @@
             <input type="hidden" name="All" id="All" value="{% for line in list %}{{line[0]}}:{% endfor %}">
         </form>
         <form id="addForm" action="/execute/" method="POST">
-            <div>
+            <div id="addFormContent">
                 <input type="text" id="titleTable" name="Title" placeholder="Titulo" required>
                 <textarea name="Description" id="textDescription" required></textarea>
-                <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
-                <span class="validity"></span>
-                <button type="button" id="closeForm" onclick="addTarefas(1)">Cancelar</button>
-                <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
+                <div>
+                    <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
+                    <button type="button" id="meio" class="closeForm" onclick="addTarefas(1)">Cancelar</button>
+                    <button type="submit" class="addForm" name="Form" value="2">Adicionar</button>
+                </div>
             </div>
         </form>
         <form id="editForm" action="/execute/" method="POST">
@@ -106,8 +107,8 @@
             <textarea name="Description" id="editDescription" required></textarea>
             <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
             <span class="validity"></span>
-            <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
-            <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
+            <button type="button" class="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
+            <button type="submit" class="addForm" name="Form" value="3">Adicionar</button>
         </form>
     </div>
 {% endblock %}

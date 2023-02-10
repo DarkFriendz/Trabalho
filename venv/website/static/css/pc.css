@@ -128,7 +128,7 @@ div#interfaceTarefas form#addForm {
     display: none;
 }
 
-div#interfaceTarefas form#addForm div {
+div#interfaceTarefas form#addForm div#addFormContent {
     width: 75%;
     margin: 15mm auto;
     margin-bottom: 5mm;
@@ -138,26 +138,26 @@ div#interfaceTarefas form#addForm div {
     border: solid rgb(75, 100, 120) 0.8mm;
 }
 
-div#interfaceTarefas form#addForm div::before {
+div#interfaceTarefas form#addForm div#addFormContent::before {
     content: "Adicionar Tarefa";
     font-size: 7mm;
     font-weight: bold;
-    margin-left: -118mm;
     padding: 2mm 5mm;
     background-color: rgb(230, 230, 230);
     border: solid rgb(75, 100, 120) 0.8mm;
     border-radius: 3mm;
     position: fixed;
     top: 8mm;
+    left: 55mm;
 }
 
-div#interfaceTarefas form#addForm div input#titleTable {
+div#interfaceTarefas form#addForm div#addFormContent input#titleTable {
     width: 93%;
     float: left;
     display: block;
 }
 
-div#interfaceTarefas form#addForm div textarea#textDescription {
+div#interfaceTarefas form#addForm div#addFormContent textarea#textDescription {
     margin: 5mm 0mm;
     width: 93%;
     max-width: 93%;
@@ -166,6 +166,19 @@ div#interfaceTarefas form#addForm div textarea#textDescription {
     max-height: 35mm;
     min-height: 10mm;
 }
+
+div#interfaceTarefas form#addForm div#addFormContent div {
+    display: flex;
+}
+
+div#interfaceTarefas form#addForm div#addFormContent div button {
+    width: 28%;
+}
+
+div#interfaceTarefas form#addForm div#addFormContent div button#meio {
+    margin: 0mm auto;
+}
+
 
 div#interfaceTarefas form#editForm {
     display: none;
