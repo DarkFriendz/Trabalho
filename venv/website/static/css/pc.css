@@ -34,3 +34,62 @@ div#interfaceTarefas::before {
     position: absolute;
     top: 11mm;
 }
+
+div#interfaceTarefas input,
+div#interfaceTarefas button,
+div#interfaceTarefas select,
+div#interfaceTarefas textarea {
+    font-weight: bold;
+    padding: 2mm 5mm;
+    border: solid rgb(75, 100, 120) 0.8mm;
+    border-radius: 3mm;
+}
+
+div#interfaceTarefas input#Pesquisar,
+div#interfaceTarefas input#PesquisarDate {
+    float: left;
+}
+
+div#interfaceTarefas select {
+    float: right;
+}
+
+div#interfaceTarefas form#form {
+    padding-top: 8mm;
+}
+
+div#interfaceTarefas form#form div {
+    display: flex;
+}
+
+div#interfaceTarefas form#form div button {
+    width: 60mm;
+}
+
+div#interfaceTarefas form#form div button#addTarefa {
+    background-color: rgb(0, 255, 0);
+    border: solid rgb(0, 255, 0) 0.8mm;
+}
+
+div#interfaceTarefas form#form div button#addTarefa:hover {
+    border: solid rgb(0, 0, 0) 0.8mm;
+}
+
+div#interfaceTarefas form#form div button#terminarTarefa {
+    margin: 0mm auto;
+    background-color: rgb(0, 0, 255);
+    border: solid rgb(0, 0, 255) 0.8mm;
+}
+
+div#interfaceTarefas form#form div button#terminarTarefa:hover {
+    border: solid rgb(0, 0, 0) 0.8mm;
+}
+
+div#interfaceTarefas form#form div button#deletarTarefa {
+    background-color: rgb(255, 0, 0);
+    border: solid rgb(255, 0, 0) 0.8mm;
+}
+
+div#interfaceTarefas form#form div button#deletarTarefa:hover {
+    border: solid rgb(0, 0, 0) 0.8mm;
+}
