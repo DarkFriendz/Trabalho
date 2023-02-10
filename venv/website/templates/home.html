@@ -39,7 +39,7 @@
                     {% for line in list %}
                         {% if line[3] == 0 %}
                             {% if line[7] == 0 %}
-                                <tr id="{{line[0]}}L">
+                                <tr id="{{line[0]}}L" class="line">
                                     <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
                                     <td id="{{line[0]}}T">{{line[1]}}</td>
                                     <td id="{{line[0]}}D">{{line[2]}}</td>
