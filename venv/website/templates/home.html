@@ -108,8 +108,9 @@
                 <textarea name="Description" id="editDescription" required></textarea>
                 <div>
                     <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
-                    <select name="Done" id="editDone">
-                        
+                    <select name="Done" id="editDone" required>
+                        <option value="0" id="editDone0">Não fez</option>
+                        <option value="1" id="editDone0">Feita</option>
                     </select>
                 </div>
                 <div>

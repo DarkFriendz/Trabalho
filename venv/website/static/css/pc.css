@@ -197,7 +197,7 @@ div#interfaceTarefas form#editForm {
 
 div#interfaceTarefas form#editForm div#editFormContent {
     width: 75%;
-    margin: 15mm auto;
+    margin: 10mm auto;
     margin-bottom: 5mm;
     padding: 8mm 5mm;
     padding-bottom: 5mm;
@@ -214,7 +214,7 @@ div#interfaceTarefas form#editForm div#editFormContent::before {
     border: solid rgb(75, 100, 120) 0.8mm;
     border-radius: 3mm;
     position: fixed;
-    top: 8mm;
+    top: 3mm;
     left: 55mm;
 }
 

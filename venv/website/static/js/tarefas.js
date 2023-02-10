@@ -39,6 +39,13 @@ function editTarefa(x, id) {
         prazo = prazo.replace("/", "-")
         prazo = prazo.replace(" ", "T")
         document.getElementById("editPrazo").value = prazo
+        feito = document.getElementById("editDone")
+        if (document.getElementById(id+"L").className != "lineFeita") {
+            feito.value = 0
+        } else {
+            feito.value = 1
+        }
+        //feito.appendChild()
         form.style.display = "block"
     } else {
         document.getElementById("editId").value = ""
