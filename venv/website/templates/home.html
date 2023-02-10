@@ -102,13 +102,21 @@
             </div>
         </form>
         <form id="editForm" action="/execute/" method="POST">
-            <input type="hidden" name="Id" id="editId" value="">
-            <input type="text" name="Title" value="Vazio" id="editTitle" required>
-            <textarea name="Description" id="editDescription" required></textarea>
-            <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
-            <span class="validity"></span>
-            <button type="button" class="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
-            <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
+            <div id="editFormContent">
+                <input type="hidden" name="Id" id="editId" value="">
+                <input type="text" name="Title" value="Vazio" id="editTitle" required>
+                <textarea name="Description" id="editDescription" required></textarea>
+                <div>
+                    <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
+                    <select name="Done" id="editDone">
+                        
+                    </select>
+                </div>
+                <div>
+                    <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
+                    <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
