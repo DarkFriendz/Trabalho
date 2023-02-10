@@ -93,11 +93,11 @@
         <form id="addForm" action="/execute/" method="POST">
             <div id="addFormContent">
                 <input type="text" id="titleTable" name="Title" placeholder="Titulo" required>
-                <textarea name="Description" id="textDescription" required></textarea>
+                <textarea name="Description" id="textDescription" placeholder="Descrição" required></textarea>
                 <div>
                     <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
                     <button type="button" id="meio" class="closeForm" onclick="addTarefas(1)">Cancelar</button>
-                    <button type="submit" class="addForm" name="Form" value="2">Adicionar</button>
+                    <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
                 </div>
             </div>
         </form>
@@ -108,7 +108,7 @@
             <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
             <span class="validity"></span>
             <button type="button" class="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
-            <button type="submit" class="addForm" name="Form" value="3">Adicionar</button>
+            <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
         </form>
     </div>
 {% endblock %}
