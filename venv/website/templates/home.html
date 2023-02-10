@@ -5,8 +5,8 @@
 {% block content %}
     <div id="interfaceTarefas">
         <br>
-        <input type="datetime-local" name="PesquisarDate" id="PesquisarDate">
-        <input type="search" placeholder="Pesquisar" id="Pesquisar">
+        <input type="datetime-local" name="PesquisarDate" id="PesquisarDate" style="display: None;">
+        <input type="search" placeholder="Pesquisar" id="Pesquisar" style="display: flex;">
         <select name="Filter" id="Filter">
             <option value="0">Titulo</option>
             <option value="1">Descrição</option>
@@ -19,57 +19,56 @@
         <br>
         <br>
         <form id="form" action="/execute/" method="POST">
-            <button type="button" id="menuTableAdd" class="add" onclick="addTarefas(0)">Adcionar Tarefa</button>
-            <button type="submit" id="menuTableTerminar" name="Form" value=0>Terminar Tarefas</button>
-            <button type="submit" id="menuTableDeletar" name="Form" value=1>Deletar Tarefas</button>
-
+            <button type="button">Adcionar Tarefa</button>
+            <button type="submit" name="Form" value=0>Terminar Tarefas</button>
+            <button type="submit" name="Form" value=1>Deletar Tarefas</button>
             <table>
                 <tr>
                     <th>Selecionar</th>
-                    <th id="Title">Titulo</th>
-                    <th id="Description">Descrição</th>
-                    <th id="Datas">Criado em</th>
-                    <th id="Datas">Prazo</th>
-                    <th id="Datas">Editado</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Criado em</th>
+                    <th>Prazo</th>
+                    <th>Editado</th>
                     <th>Editar</th>
-                    <th class="endTable">Deletar</th>
+                    <th>Deletar</th>
                 </tr>
                 {% if list %}
                     {% for line in list %}
                         {% if line[3] == 0 %}
                             {% if line[7] == 0 %}
-                                <tr id="{{line[0]}}L" class="line">
-                                    <td class="selectTable"><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td class="titleTable" id="{{line[0]}}T">{{line[1]}}</td>
-                                    <td class="descriptionTable" id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td class="createTable" id="{{line[0]}}C">{{line[4]}}</td>
-                                    <td class="prazoTable" id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td class="editTable" id="{{line[0]}}E">{{line[6]}}</td>
-                                    <td class="btn1Table"><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                    <td class="btn2Table"><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
+                                <tr id="{{line[0]}}L">
+                                    <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
+                                    <td id="{{line[0]}}T">{{line[1]}}</td>
+                                    <td id="{{line[0]}}D">{{line[2]}}</td>
+                                    <td id="{{line[0]}}C">{{line[4]}}</td>
+                                    <td id="{{line[0]}}P">{{line[5]}}</td>
+                                    <td id="{{line[0]}}E">{{line[6]}}</td>
+                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
+                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% else %}
                                 <tr id="{{line[0]}}L" class="lineExpired">
-                                    <td class="selectTable"><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td class="titleTable" id="{{line[0]}}T">{{line[1]}}</td>
-                                    <td class="descriptionTable" id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td class="createTable" id="{{line[0]}}C">{{line[4]}}</td>
-                                    <td class="prazoTable" id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td class="editTable" id="{{line[0]}}E">{{line[6]}}</td>
-                                    <td class="btn1Table"><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                    <td class="btn2Table"><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
+                                    <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
+                                    <td id="{{line[0]}}T">{{line[1]}}</td>
+                                    <td id="{{line[0]}}D">{{line[2]}}</td>
+                                    <td id="{{line[0]}}C">{{line[4]}}</td>
+                                    <td id="{{line[0]}}P">{{line[5]}}</td>
+                                    <td id="{{line[0]}}E">{{line[6]}}</td>
+                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
+                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                                 </tr>
                             {% endif %}
                         {% else %}
                             <tr id="{{line[0]}}L" class="lineFeita">
-                                <td class="selectTable"><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                <td class="titleTable" id="{{line[0]}}T">{{line[1]}}</td>
-                                <td class="descriptionTable" id="{{line[0]}}D">{{line[2]}}</td>
-                                <td class="createTable" id="{{line[0]}}C">{{line[4]}}</td>
-                                <td class="prazoTable" id="{{line[0]}}P">{{line[5]}}</td>
-                                <td class="editTable" id="{{line[0]}}E">{{line[6]}}</td>
-                                <td class="btn1Table"><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                <td class="btn2Table"><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
+                                <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
+                                <td id="{{line[0]}}T">{{line[1]}}</td>
+                                <td id="{{line[0]}}D">{{line[2]}}</td>
+                                <td id="{{line[0]}}C">{{line[4]}}</td>
+                                <td id="{{line[0]}}P">{{line[5]}}</td>
+                                <td id="{{line[0]}}E">{{line[6]}}</td>
+                                <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
+                                <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -90,25 +89,21 @@
             <input type="hidden" name="All" id="All" value="{% for line in list %}{{line[0]}}:{% endfor %}">
         </form>
         <form id="addForm" action="/execute/" method="POST">
-            <div>
-                <span id="formTitleSpan">Titulo</span>
-                <input id="formTitle" type="text" name="Title" required>
-                <textarea name="Description" id="textDescription" required></textarea>
-                <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
-                <button type="button" id="closeForm" onclick="addTarefas(1)">Cancelar</button>
-                <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
-            </div>
+            <input type="text" name="Title" placeholder="Titulo" required>
+            <textarea name="Description" id="textDescription" required></textarea>
+            <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
+            <span class="validity"></span>
+            <button type="button" id="closeForm">Cancelar</button>
+            <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
         </form>
         <form id="editForm" action="/execute/" method="POST">
-            <div>
-                <input type="hidden" name="Id" id="editId" value="">
-                <input type="text" name="Title" value="Vazio" id="editTitle" required>
-                <textarea name="Description" id="editDescription" required></textarea>
-                <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
-                <span class="validity"></span>
-                <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
-                <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
-            </div>
+            <input type="hidden" name="Id" id="editId" value="">
+            <input type="text" name="Title" value="Vazio" id="editTitle" required>
+            <textarea name="Description" id="editDescription" required></textarea>
+            <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
+            <span class="validity"></span>
+            <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
+            <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
         </form>
     </div>
 {% endblock %}

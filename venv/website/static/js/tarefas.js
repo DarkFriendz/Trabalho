@@ -39,13 +39,13 @@ function editTarefa(x, id) {
         prazo = prazo.replace("/", "-")
         prazo = prazo.replace(" ", "T")
         document.getElementById("editPrazo").value = prazo
-        form.style.display = "block"
+        //form.style.display = "Block"
     } else {
         document.getElementById("editId").value = ""
         document.getElementById("editTitle").value = "Vazio"
         document.getElementById("editDescription").value = "Vazio"
         document.getElementById("editPrazo").value = ""
-        form.style.display = "none"
+        //form.style.display = "none"
     }
 }
 

@@ -10,196 +10,27 @@ body div#content {
     padding-bottom: 5mm;
 }
 
+body div#content button {
+    font-size: 3.2mm;
+}
+
 /* Page Tarefas */
 
 div#interfaceTarefas {
-    padding: 5mm;
-    background-color: rgb(117 169 183);
-    border: solid rgb(0, 200, 255,0.5) 0.2mm;
+    padding: 8mm 5mm;
+    padding-bottom: 5mm;
+    background-color: rgb(140, 175, 190);
+    border: solid rgb(75, 100, 120) 0.8mm;
 }
 
 div#interfaceTarefas::before {
     content: "Tarefas";
     font-size: 7mm;
+    font-weight: bold;
     padding: 2mm 5mm;
     background-color: rgb(230, 230, 230);
-    border: solid rgba(0, 200, 255,0.5) 0.2mm;
+    border: solid rgb(75, 100, 120) 0.8mm;
     border-radius: 3mm;
     position: absolute;
     top: 11mm;
-}
-
-div#interfaceTarefas input,
-div#interfaceTarefas select,
-div#interfaceTarefas textarea,
-div#interfaceTarefas button {
-    background-color: rgb(230, 230, 230);
-    border: solid rgba(0, 200, 255,0.5) 0.2mm;
-    padding: 2mm 5mm;
-}
-
-div#interfaceTarefas input#Pesquisar {
-    float: left;
-}
-
-div#interfaceTarefas input#PesquisarDate {
-    display: none;
-    float: left;
-}
-
-div#interfaceTarefas select {
-    float: right;
-}
-
-div#interfaceTarefas form#form {
-    margin: 10mm 0mm;
-}
-
-div#interfaceTarefas form#form button#menuTableAdd {
-    margin: 0mm 5mm;
-    margin-bottom: 5mm;
-    font-weight: bold;
-    background-color: rgb(0, 255, 0);
-    border: solid rgb(0, 255, 0) 0.8mm;
-    border-radius: 3mm;
-}
-
-div#interfaceTarefas form#form button#menuTableTerminar {
-    margin: 0mm 5mm;
-    margin-bottom: 5mm;
-    font-weight: bold;
-    background-color: rgb(0, 0, 255);
-    border: solid rgb(0, 0, 255) 0.8mm;
-    border-radius: 3mm;
-}
-div#interfaceTarefas form#form button#menuTableDeletar {
-    margin: 0mm 5mm;
-    margin-bottom: 5mm;
-    font-weight: bold;
-    background-color: rgb(255, 0, 0);
-    border: solid rgb(255, 0, 0) 0.8mm;
-    border-radius: 3mm;
-}
-
-div#interfaceTarefas form#form button#menuTableAdd:hover,
-div#interfaceTarefas form#form button#menuTableTerminar:hover,
-div#interfaceTarefas form#form button#menuTableDeletar:hover {
-    border: solid rgb(0, 0, 0) 0.8mm;
-}
-
-div#interfaceTarefas form#form table {
-    text-align: center;
-    background-color: rgb(0, 0, 0);
-}
-
-div#interfaceTarefas form#form table tr th, 
-div#interfaceTarefas form#form table tr td {
-    padding: 2mm;
-}
-
-div#interfaceTarefas form#form table tr th {
-    background-color: rgb(0, 133, 170);
-}
-
-tr.line td {
-    background-color: rgb(230, 230, 230);
-}
-
-tr.lineFeita td {
-    background-color: rgb(0, 255, 0);
-}
-
-tr.lineExpired td {
-    background-color: rgb(255, 0, 0);
-}
-
-div#interfaceTarefas form#addForm {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0, 0.2);
-    position: fixed;
-    top: 0mm;
-    left: 0mm;
-    display: none;
-}
-
-div#interfaceTarefas form#addForm div {
-    width: 65%;
-    margin: 0mm auto;
-    margin-top: 15mm;
-    background-color: rgb(117 169 183);
-    padding: 15mm 2mm;
-    border: solid rgba(0, 200, 255,0.5) 0.2mm;
-}
-
-div#interfaceTarefas form#addForm div::before {
-    content: "Adcionar Tarefa";
-    font-size: 7mm;
-    padding: 2mm 5mm;
-    background-color: rgb(230, 230, 230);
-    border: solid rgba(0, 200, 255,0.5) 0.2mm;
-    border-radius: 3mm;
-    position: fixed;
-    top: 9mm;
-}
-
-div#interfaceTarefas form#addForm input#formTitle {
-    width: 93%;
-    margin-bottom: 5mm;
-    border-color: rgb(0, 0, 0);
-    border-radius: 2mm;
-    display: block;
-}
-
-div#interfaceTarefas form#addForm span#formTitleSpan {
-    top: 25mm;
-    font-size: 5mm;
-    font-weight: bold;
-    position: fixed;
-    padding-left: 4mm;
-}
-
-div#interfaceTarefas form#addForm textarea {
-    width: 93%;
-    height: 35mm;
-    max-width: 93%;
-    min-width: 35mm;
-    max-height: 35mm;
-    min-height: 10mm;
-    margin-bottom: 5mm;
-    display: block;
-}
-
-div#interfaceTarefas form#addForm input#date {
-    margin-bottom: 5mm;
-    display: block;
-}
-
-div#interfaceTarefas form#editForm {
-    display: none;
-}
-
-
-div#interfaceTarefas form button#closeForm {
-    font-weight: bold;
-    background-color: rgb(255, 0, 0);
-    border: solid rgb(255, 0, 0) 0.8mm;
-    border-radius: 3mm;
-    float: left;
-}
-
-div#interfaceTarefas form button#closeForm:hover {
-    border: solid rgb(0, 0, 0) 0.8mm;
-}
-
-div#interfaceTarefas form button#addForm {
-    font-weight: bold;
-    background-color: rgb(0, 255, 0);
-    border: solid rgb(0, 255, 0) 0.8mm;
-    border-radius: 3mm;
-    float: right;
-}
-
-div#interfaceTarefas form button#addForm:hover {
-    border: solid rgb(0, 0, 0) 0.8mm;
 }
