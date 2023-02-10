@@ -20,7 +20,7 @@
         <br>
         <form id="form" action="/execute/" method="POST">
             <div>
-                <button type="button" id="addTarefa">Adcionar Tarefa</button>
+                <button type="button" id="addTarefa" onclick="addTarefas(0)">Adcionar Tarefa</button>
                 <button type="submit" id="terminarTarefa" name="Form" value=0>Terminar Tarefas</button>
                 <button type="submit" id="deletarTarefa" name="Form" value=1>Deletar Tarefas</button>
             </div>
@@ -91,12 +91,14 @@
             <input type="hidden" name="All" id="All" value="{% for line in list %}{{line[0]}}:{% endfor %}">
         </form>
         <form id="addForm" action="/execute/" method="POST">
-            <input type="text" name="Title" placeholder="Titulo" required>
-            <textarea name="Description" id="textDescription" required></textarea>
-            <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
-            <span class="validity"></span>
-            <button type="button" id="closeForm">Cancelar</button>
-            <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
+            <div>
+                <input type="text" id="titleTable" name="Title" placeholder="Titulo" required>
+                <textarea name="Description" id="textDescription" required></textarea>
+                <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
+                <span class="validity"></span>
+                <button type="button" id="closeForm" onclick="addTarefas(1)">Cancelar</button>
+                <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
+            </div>
         </form>
         <form id="editForm" action="/execute/" method="POST">
             <input type="hidden" name="Id" id="editId" value="">
