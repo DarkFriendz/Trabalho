@@ -92,7 +92,7 @@ class web():
                 
                 con = sql.connect(self.config[1])
                 DBW = con.cursor()
-                DBW.execute(f"UPDATE tarefas set Title='{request.form['Title']}', Description='{request.form['Description']}', Done=0, Prazo='{prazo}', Edit='{data}' WHERE Id={request.form['Id']}")
+                DBW.execute(f"UPDATE tarefas set Title='{request.form['Title']}', Description='{request.form['Description']}', Done={request.form['Done']}, Prazo='{prazo}', Edit='{data}' WHERE Id={request.form['Id']}")
                 con.commit()
                 con.close()
             elif request.form['Form'][0] == "4":
