@@ -16,7 +16,9 @@
     1 -- Criar colunas = id, title, description, done, due_date, created_at, updated_at X
     2 -- Criar class DB in connect.py X
 
-3 - Criar Style PC/Mobile .
+3 - Criar Style PC/Mobile x
+
+OBS: o css do mobile bugou mais se gostar do projeto eu dou continueidade!
 
 o . seguinifica a fazer, X seguinifica feito!
 
