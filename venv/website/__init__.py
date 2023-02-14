@@ -1,108 +1,51 @@
 #Assets
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template
 import sqlite3 as sql
-from datetime import datetime, timedelta
 
-#Class Website
-class web():
-    #Config Website
+#Class Web
+class web:
+    #Config Web
     def __init__(self, config):
-        #Created Website
-        self.website = Flask(__name__)
-
-        #Secret Key Website
-        self.website.config["secret_key"] = config[0]
-        self.website.secret_key = config[0]
-
-        #Config
+        #Property Settings
         self.config = config
+        #Create Website
+        self.app = Flask(__name__)
+        #Website Secret Key
+        self.app.secret_key = config[0]
+        #Datebase
+        self.db = sql.connect(self.config[1])
+        self.db.execute('CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title CHAR(200) NOT NULL, description TEXT, done CHAR(1) NOT NULL DEFAULT "N", due_date DATETIME, created_at DATETIME NOT NULL, update_at DATETIME NOT NULL)')
+        self.db.commit()
 
-    def run(self):
-        
-        #Index Page
-        @self.website.route('/')
+        #Index
+        @self.app.route('/')
         def index():
-            con = sql.connect(self.config[1])
-            db = con.cursor()
+            tasks = [
+                {
+                    'done': False,
+                    'title': 'Task 1',
+                    'description': 'Do something',
+                    'created_at': '2023-02-14 10:00:00',
+                },
+                {
+                    'done': True,
+                    'title': 'Task 2',
+                    'description': 'Do something else',
+                    'created_at': '2023-02-13 15:00:00',
+                },
+                {
+                    'done': False,
+                    'title': 'Task 3',
+                    'description': 'Do yet another thing',
+                    'created_at': '2023-02-12 12:00:00',
+                },
+            ]
+            return render_template('home.html', tasks=tasks)
 
-            db.execute("SELECT * FROM tarefas")
+    #Run Website
+    def run(self, debug=False):
+        self.app.run(debug=debug)
 
-            data = datetime.now()
-            dataNow = int(datetime.strftime(data, "%Y%m%d%H%M%S"))
-
-            lines = []
-
-            for dbList in db.fetchall():
-                dataconfirm = datetime.strptime(dbList[5], "%Y/%m/%d %H:%M:%S")
-                dataconfirm = int(datetime.strftime(dataconfirm, "%Y%m%d%H%M%S"))
-                if dataNow >= dataconfirm:
-                    lines.append([dbList[0], dbList[1], dbList[2], dbList[3], dbList[4], dbList[5], dbList[6], 1])
-                else:
-                    lines.append([dbList[0], dbList[1], dbList[2], dbList[3], dbList[4], dbList[5], dbList[6], 0])
-
-            dataMin = datetime.now()+timedelta(days=1)
-            dataMin = datetime.strftime(dataMin, "%Y-%m-%dT00:00:00")
-
-            dataMax = datetime.now()+timedelta(weeks=4)
-            dataMax = datetime.strftime(dataMax, "%Y-%m-%dT23:59:00")
-
-            return render_template('home.html', list=lines, dataMin=dataMin, dataMax=dataMax)
-
-        #Execute Page
-        @self.website.route('/execute/', methods=["POST"])
-        def execute():
-            if request.form['Form'][0] == "0":
-                select = request.form["Select"].split(":")
-                select = select[:-1]
-                con = sql.connect(self.config[1])
-                DBW = con.cursor()
-                for line in select:
-                    DBW.execute(f"UPDATE tarefas set Done=1 WHERE Id={line}")
-                con.commit()
-                con.close()
-            elif request.form['Form'][0] == "1":
-                select = request.form["Select"].split(":")
-                select = select[:-1]
-                con = sql.connect(self.config[1])
-                DBW = con.cursor()
-                for line in select:
-                    DBW.execute(f"DELETE FROM tarefas WHERE Id={line}")
-                con.commit()
-                con.close()
-            elif request.form['Form'][0] == "2":
-                data = datetime.now()
-                data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
-                
-                prazo = request.form['Prazo'].replace("-", "/")
-                prazo = prazo.replace("T", " ")
-                prazo = prazo+":00"
-
-                con = sql.connect(self.config[1])
-                DBW = con.cursor()
-                DBW.execute(f"INSERT INTO tarefas (Title, Description, Done, Data, Prazo, Edit) VALUES ('{request.form['Title']}', '{request.form['Description']}', 0, '{data}', '{prazo}', null)")
-                con.commit()
-                con.close()
-            elif request.form['Form'][0] == "3":
-                data = datetime.now()
-                data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
-                
-                prazo = request.form['Prazo'].replace("-", "/")
-                prazo = prazo.replace("T", " ")
-                prazo = prazo+":00"
-                
-                con = sql.connect(self.config[1])
-                DBW = con.cursor()
-                DBW.execute(f"UPDATE tarefas set Title='{request.form['Title']}', Description='{request.form['Description']}', Done={request.form['Done']}, Prazo='{prazo}', Edit='{data}' WHERE Id={request.form['Id']}")
-                con.commit()
-                con.close()
-            elif request.form['Form'][0] == "4":
-                con = sql.connect(self.config[1])
-                DBW = con.cursor()
-                DBW.execute(f"DELETE FROM tarefas WHERE Id={request.form['Form'][1]}")
-                con.commit()
-                con.close()
-
-            return redirect("/")
-
-        #Run Website
-        self.website.run(debug=True)
+    #Close Aplication
+    def __del__(self):
+        self.db.close()

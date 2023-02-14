@@ -2,124 +2,60 @@
 
 {% block title %}Home{% endblock %}
 
-{% block content %}
-    <div id="interfaceTarefas">
-        <br>
-        <input type="datetime-local" name="PesquisarDate" id="PesquisarDate" style="display: None;">
-        <input type="search" placeholder="Pesquisar" id="Pesquisar" style="display: flex;">
-        <select name="Filter" id="Filter">
-            <option value="0">Titulo</option>
-            <option value="1">Descrição</option>
-            <option value="2">Criado em</option>
-            <option value="3">Prazo</option>
-            <option value="4">Editado</option>
-            <option value="5">Feito</option>
-            <option value="6">Expirado</option>
-        </select>
-        <br>
-        <br>
-        <form id="form" action="/execute/" method="POST">
-            <div>
-                <button type="button" id="addTarefa" onclick="addTarefas(0)">Adcionar Tarefa</button>
-                <button type="submit" id="terminarTarefa" name="Form" value=0>Terminar Tarefas</button>
-                <button type="submit" id="deletarTarefa" name="Form" value=1>Deletar Tarefas</button>
-            </div>
-            <table>
-                <tr>
-                    <th>Selecionar</th>
-                    <th>Titulo</th>
-                    <th>Descrição</th>
-                    <th>Criado em</th>
-                    <th>Prazo</th>
-                    <th>Editado</th>
-                    <th>Editar</th>
-                    <th>Deletar</th>
-                </tr>
-                {% if list %}
-                    {% for line in list %}
-                        {% if line[3] == 0 %}
-                            {% if line[7] == 0 %}
-                                <tr id="{{line[0]}}L" class="line">
-                                    <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td id="{{line[0]}}T">{{line[1]}}</td>
-                                    <td id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td id="{{line[0]}}C">{{line[4]}}</td>
-                                    <td id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td id="{{line[0]}}E">{{line[6]}}</td>
-                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
-                                </tr>
-                            {% else %}
-                                <tr id="{{line[0]}}L" class="lineExpired">
-                                    <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                    <td id="{{line[0]}}T">{{line[1]}}</td>
-                                    <td id="{{line[0]}}D">{{line[2]}}</td>
-                                    <td id="{{line[0]}}C">{{line[4]}}</td>
-                                    <td id="{{line[0]}}P">{{line[5]}}</td>
-                                    <td id="{{line[0]}}E">{{line[6]}}</td>
-                                    <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                    <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
-                                </tr>
-                            {% endif %}
-                        {% else %}
-                            <tr id="{{line[0]}}L" class="lineFeita">
-                                <td><input type="checkbox" name="check" id="checkbox" onchange="lineSelect(this, {{line[0]}})"></td>
-                                <td id="{{line[0]}}T">{{line[1]}}</td>
-                                <td id="{{line[0]}}D">{{line[2]}}</td>
-                                <td id="{{line[0]}}C">{{line[4]}}</td>
-                                <td id="{{line[0]}}P">{{line[5]}}</td>
-                                <td id="{{line[0]}}E">{{line[6]}}</td>
-                                <td><button type="button" onclick="editTarefa(0, {{line[0]}})">Editar</button></td>
-                                <td><button type="submit" name="Form" value=4{{line[0]}}>Deletar</button></td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                        <td>Vazio</td>
-                    </tr>
-                {% endif %}
-            </table>
-            <input type="hidden" name="Select" id="Select" value="None">
-            <input type="hidden" name="All" id="All" value="{% for line in list %}{{line[0]}}:{% endfor %}">
-        </form>
-        <form id="addForm" action="/execute/" method="POST">
-            <div id="addFormContent">
-                <input type="text" id="titleTable" name="Title" placeholder="Titulo" required>
-                <textarea name="Description" id="textDescription" placeholder="Descrição" required></textarea>
-                <div>
-                    <input type="datetime-local" name="Prazo" id="date" min="{{dataMin}}" max="{{dataMax}}" required>
-                    <button type="button" id="meio" class="closeForm" onclick="addTarefas(1)">Cancelar</button>
-                    <button type="submit" id="addForm" name="Form" value="2">Adicionar</button>
-                </div>
-            </div>
-        </form>
-        <form id="editForm" action="/execute/" method="POST">
-            <div id="editFormContent">
-                <input type="hidden" name="Id" id="editId" value="">
-                <input type="text" name="Title" value="Vazio" id="editTitle" required>
-                <textarea name="Description" id="editDescription" required></textarea>
-                <div>
-                    <input type="datetime-local" name="Prazo" id="editPrazo" min="{{dataMin}}" max="{{dataMax}}" required>
-                    <select name="Done" id="editDone" required>
-                        <option value="0" id="editDone0">Não fez</option>
-                        <option value="1" id="editDone0">Feita</option>
-                    </select>
-                </div>
-                <div>
-                    <button type="button" id="closeForm" onclick="editTarefa(1, null)">Cancelar</button>
-                    <button type="submit" id="addForm" name="Form" value="3">Adicionar</button>
-                </div>
-            </div>
-        </form>
-    </div>
+{% block styles %}
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        text-align: center;
+        white-space: pre-wrap;
+        padding: 8px;
+        border-left: 1px solid rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(221, 221, 221);
+    }
+    th {
+        border-top: 1px solid rgb(0, 0, 0);
+        background-color: rgb(242, 242, 242);
+    }
+    td {
+        border-bottom: 1px solid rgb(0, 0, 0);
+    }
+    .fim {
+        border-right: 1px solid rgb(0, 0, 0);
+    }
+    </style>
 {% endblock %}
 
-{% block scripts %} <script src="{{url_for('static', filename='js/tarefas.js')}}"></script> {% endblock %}
+{% block content %}
+    <h1>Todos</h1>
+    <table>
+    <tr>
+        <th>Feito</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Criada em</th>
+        <th class="fim">Ações</th>
+    </tr>
+    {% if tasks %}
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.done }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.created_at }}</td>
+            <td class="fim"><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>Vazio</td>
+            <td>Vazio</td>
+            <td>Vazio</td>
+            <td>Vazio</td>
+            <td class="fim">Vazio</td>
+        </tr>
+    {% endif %}
+    </table>
+{% endblock %} 
