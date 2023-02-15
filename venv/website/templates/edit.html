@@ -201,11 +201,36 @@
             expired = document.getElementById("done")
 
             addEventListener("change", function() {
-               
-                if (expired.checked != false) {
+                data = new Date()
+                data = `${data.getFullYear()}${data.getMonth().toString().padStart(2, '0')}${data.getDate().toString().padStart(2, '0')}${data.getHours()}${data.getMinutes()}${data.getSeconds()}`
+                dataConfirm = document.getElementById("date").value.replace(/-/g, "")
+                dataConfirm = dataConfirm.replace("T", "")
+                dataConfirm = dataConfirm.replace(/:/g, "")
+                dataConfirm = dataConfirm+"00"
 
+                if (expired.checked != false) {
+                    if (document.getElementById("expired")) {
+                        element = document.getElementById("expired")
+                        element.textContent = "Valida"
+                        element.style.backgroundColor = "rgb(0, 255, 0)"
+                        element.id = "valid"
+                    }
                 } else {
-                    
+                    if (dataConfirm >= data) {
+                        if (document.getElementById("expired")) {
+                            element = document.getElementById("expired")
+                            element.textContent = "Valida"
+                            element.style.backgroundColor = "rgb(0, 255, 0)"
+                            element.id = "valid"
+                        }
+                    } else {
+                        if (document.getElementById("valid")) {
+                            element = document.getElementById("valid")
+                            element.textContent = "Expired"
+                            element.style.backgroundColor = "rgb(255, 0, 0)"
+                            element.id = "expired"
+                        }
+                    }
                 }
             })
         {% endif %}
