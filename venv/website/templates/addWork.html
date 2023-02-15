@@ -3,11 +3,33 @@
 {% block title %}Add Work{% endblock %}
 
 {% block styles %}
-
+    <style>
+        div#addWork {
+            width: 75%;
+            margin: 75px auto;
+            margin-bottom: 0px;
+            padding: 15px;
+            border: 1px solid rgb(0, 0, 0);
+        }
+        div#addWork form input[name="title"] {
+            width: 98.5%;
+            margin: 10px 0px;
+        }
+        div#addWork form textarea {
+            width: 98.7%;
+            max-width: 98.7%;
+            min-width: 25%;
+            height: 150px;
+            max-height: 150px;
+            min-height: 15px;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-    <div id="Add Work">
+    <div id="addWork">
         <form action="execute" method="post">
             <input type="text" name="title" required>
             <textarea name="description" name="description"></textarea>
