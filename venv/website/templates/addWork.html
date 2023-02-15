@@ -11,7 +11,7 @@
         <form action="execute" method="post">
             <input type="text" name="title" required>
             <textarea name="description" name="description"></textarea>
-            <input type="datetime-local" name="date">
+            <input type="datetime-local" name="date" id="date">
             <a href="/">Voltar</a>
             <button type="submit" name="form" value="Add">Criar</button>
         </form>
@@ -19,5 +19,10 @@
 {% endblock %}
 
 {% block scripts %}
-
+    <script>
+        data = new Date()
+        data.getDate() + 1
+        data = data.toISOString().substring(0, 19);
+        document.getElementById("date").min = data
+    </script>
 {% endblock %}
