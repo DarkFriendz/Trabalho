@@ -22,6 +22,11 @@ class web:
         def index():
             return render_template('home.html', tasks=self.db.tasks())
 
+        #Add Work
+        @self.app.route('/addWork')
+        def addWork():
+            return render_template('addWork.html')
+
     #Run Website
     def run(self, debug=False):
         self.app.run(debug=debug)
