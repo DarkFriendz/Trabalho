@@ -10,6 +10,17 @@
         margin-bottom: 0px;
     }
 
+    ul#menu {
+        padding: 15px;
+        text-align: center;
+        list-style: none;
+        border: 1px solid rgb(0, 0, 0);
+    }
+
+    ul#menu li {
+        display: inline-flex;
+    }
+
     div#footer {
         padding: 15px;
         text-align: center;
@@ -46,8 +57,9 @@
 
 {% block content %}
     <div id="todos">
-        <ul id="Menu">
+        <ul id="menu">
             <li><a href="/addWork">+ Tarefa</a></li>
+            <!-- <li><a href="/deletWork">- Tarefa</a></li> -->
         </ul>
         <table>
         <tr>
