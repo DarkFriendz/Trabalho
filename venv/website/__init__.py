@@ -27,6 +27,11 @@ class web:
         def addWork():
             return render_template('addWork.html')
 
+        #Execute
+        @self.app.route('/execute')
+        def execute():
+            return "execute"
+
     #Run Website
     def run(self, debug=False):
         self.app.run(debug=debug)
