@@ -30,12 +30,15 @@ class web:
         #Actions
         @self.app.route('/actions', methods=["POST"])
         def actions():
-            if request.form['form'] == "Edit":
+            if request.form['form'] == "Done":
+                self.db.doneTask(request.form)
+                return redirect("/")
+            elif request.form['form'] == "Edit":
                 return "editar"
             elif request.form['form'] == "Delet":
                 self.db.deletTask(request.form)
                 return redirect("/")
-                
+
         #Execute
         @self.app.route('/execute', methods=["POST"])
         def execute():

@@ -43,4 +43,13 @@ class db:
     def deletTask(self, request):
         with sql.connect(config[1]) as con:
             cur = con.cursor()
-            cur.execute('DELETE FROM todos WHERE id=?', (request['id']))
+            cur.execute('DELETE FROM todos WHERE (id=?)', (request['id']))
+
+    #Task Done
+    def doneTask(self, request):
+        with sql.connect(config[1]) as con:
+            cur = con.cursor()
+            if request['done'] != "S":
+                cur.execute('UPDATE todos SET done=? WHERE id=?', ("S", request['id']))
+            else:
+                cur.execute('UPDATE todos SET done=? WHERE id=?', ("N", request['id']))
