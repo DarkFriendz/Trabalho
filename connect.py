@@ -29,7 +29,7 @@ class db:
                     dataTask = dataTask.replace(" ", "")
                     dataTask = dataTask.replace(":", "")
                     if data >= dataTask:
-                        tasks[id-1] = tasks[id-1]+('Expired',)
+                        tasks[id] = task+('Expired',)
             cur.close()
 
         return tasks
@@ -56,7 +56,7 @@ class db:
     def deletTask(self, request):
         with sql.connect(config[1]) as con:
             cur = con.cursor()
-            cur.execute('DELETE FROM todos WHERE (id=?)', (request['id']))
+            cur.execute('DELETE FROM todos WHERE id=?', (request['id'],))
             cur.close()
 
     #Task Done
@@ -75,6 +75,22 @@ class db:
             cur = con.cursor()
             cur.execute('SELECT * FROM todos WHERE (id=?)', (id,))
             task = cur.fetchone()
+            try:
+                if task[4] != None:
+                    taskList = list(task)
+                    data = taskList[4].replace("/", "-")
+                    data = data.replace(" ", "T")
+                    taskList[4] = data
+                    task = tuple(taskList)
+                    data = datetime.now()
+                    data = datetime.strftime(data, "%Y%m%d%H%M%S")
+                    dataTask = task[4].replace("-","")
+                    dataTask = dataTask.replace(" ", "")
+                    dataTask = dataTask.replace(":", "")
+                    if data >= dataTask:
+                        task = task+('Expired',)
+            except:
+                pass
             cur.close()
-            
+
         return task
