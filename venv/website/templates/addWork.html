@@ -9,9 +9,15 @@
 {% block content %}
     <div id="Add Work">
         <form action="execute" method="post">
-
+            <input type="text" name="title" required>
+            <textarea name="description" name="description"></textarea>
+            <input type="datetime-local" name="date">
             <a href="/">Voltar</a>
             <button type="submit" name="form" value="Add">Criar</button>
         </form>
     </div>
-{% endblock %} 
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
