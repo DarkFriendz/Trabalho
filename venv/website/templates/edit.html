@@ -202,7 +202,11 @@
 
             addEventListener("change", function() {
                
-                alert('vivo')
+                if (expired.checked != false) {
+
+                } else {
+                    
+                }
             })
         {% endif %}
 
@@ -215,7 +219,7 @@
         dataLocal.min = data
 
         dataLocal.addEventListener("change", function() {
-            data = document.getElementById("date").value.replace(/-/g, "/")
+            data = dataLocal.value.replace(/-/g, "/")
             data = data.replace("T", " ")
             data = data+":00"
             document.getElementById("dateLocal").value = data
