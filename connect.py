@@ -19,7 +19,20 @@ class db:
     def tasks(self):
         with sql.connect(config[1]) as con:
             cur = con.cursor()
+            data = datetime.now()
+            data = datetime.strftime(data, "%Y%m%d%H%M%S")
             tasks = cur.execute('SELECT * FROM todos').fetchall()
+            
+            for id, task in enumerate(tasks):
+                if task[4] != None:
+                    dataTask = task[4].replace("/","")
+                    dataTask = dataTask.replace(" ", "")
+                    dataTask = dataTask.replace(":", "")
+                    if data >= dataTask:
+                        tasks[id-1] = tasks[id-1]+('Expired',)
+        
+            print(tasks)
+
         return tasks
 
     #Add Values in Table
