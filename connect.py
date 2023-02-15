@@ -1,5 +1,6 @@
 #Assets
 import sqlite3 as sql
+from datetime import datetime
 
 #Config
 from config import config
@@ -20,3 +21,26 @@ class db:
             cur = con.cursor()
             tasks = cur.execute('SELECT * FROM todos').fetchall()
         return tasks
+
+    #Add Values in Table
+    def addTask(self, request):
+        with sql.connect(config[1]) as con:
+            cur = con.cursor()
+            data = datetime.now()
+            data = datetime.strftime(data, "%Y/%m/%d %H:%M:%S")
+            if request['description'] != '':
+                if request['date'] != '':
+                    cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], request['description'], request['date'], data, data))
+                else:
+                    cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], request['description'], None, data, data))
+            else:
+                if request['date'] != '':
+                    cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], None, request['date'], data, data))
+                else:
+                    cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], None, None, data, data))
+
+    #Delet Values in Table
+    def deletTask(self, request):
+        with sql.connect(config[1]) as con:
+            cur = con.cursor()
+            cur.execute('DELETE FROM todos WHERE id=?', (request['id']))

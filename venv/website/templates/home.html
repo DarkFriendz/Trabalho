@@ -142,7 +142,11 @@
                 <tr id="L{{task[0]}}">
                     <td>{{ task[3] }}<input type="hidden" name="done" value="{{task[3]}}"></td>
                     <td><button type="submit" name="form" value="Edit">{{ task[1] }}</button><input type="hidden" name="title" value="{{task[1]}}"></td>
-                    <td>{{ task[2] }}<input type="hidden" name="description" value="{{task[2]}}"></td>
+                    {% if task[2] == None %}
+                        <td>Vazio<input type="hidden" name="description" value="{{task[2]}}"></td>
+                    {% else %}
+                        <td>{{ task[2] }}<input type="hidden" name="description" value="{{task[2]}}"></td>
+                    {% endif %}
                     <td>{{ task[5] }}<input type="hidden" name="created_at" value="{{task[5]}}"></td>
                     <td class="fim"><button type="submit" name="form" value="Delet"><i class="gg-trash"></i></button></td>
                 </tr>

@@ -1,5 +1,5 @@
 #Assets
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 #Datebase
 from connect import db
@@ -27,10 +27,22 @@ class web:
         def addWork():
             return render_template('addWork.html')
 
+        #Actions
+        @self.app.route('/actions', methods=["POST"])
+        def actions():
+            if request.form['form'] == "Edit":
+                return "editar"
+            elif request.form['form'] == "Delet":
+                self.db.deletTask(request.form)
+                return redirect("/")
+                
         #Execute
-        @self.app.route('/execute')
+        @self.app.route('/execute', methods=["POST"])
         def execute():
-            return "execute"
+            if request.form['form'] == "add":
+                self.db.addTask(request.form)
+                return redirect("/")
+            
 
     #Run Website
     def run(self, debug=False):

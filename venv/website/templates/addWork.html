@@ -88,9 +88,10 @@
             <input type="text" name="title" placeholder="Título" minlength="3" required>
             <textarea name="description" name="description" placeholder="Descrição"></textarea>
             <div>
-                <input type="datetime-local" name="date" id="date">
+                <input type="datetime-local" id="date">
+                <input type="hidden" id="dateLocal" name="date" value="">
                 <a href="/">Voltar</a>
-                <button type="submit" name="form" value="Add">Criar</button>
+                <button type="submit" name="form" value="add">Criar</button>
             </div>
         </form>
     </div>
@@ -98,9 +99,19 @@
 
 {% block scripts %}
     <script>
+        dataLocal = document.getElementById("date")
         data = new Date()
         data.setDate(data.getDate()+1)
+        data.setHours(0,0,0,0)
         data = data.toISOString().substring(0, 19);
-        document.getElementById("date").min = data
+        dataLocal.min = data
+
+        dataLocal.addEventListener("change", function() {
+            data = dataLocal.value.replace("-", "/")
+            data = data.replace("-", "/")
+            data = data.replace("T", " ")
+            data = data+":00"
+            document.getElementById("dateLocal").value = data
+        })
     </script>
 {% endblock %}
