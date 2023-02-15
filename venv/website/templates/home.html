@@ -4,7 +4,23 @@
 
 {% block styles %}
     <style>
+    div#todos {
+        width: 75%;
+        margin: 100px auto;
+        margin-bottom: 0px;
+    }
+
+    div#footer {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid rgb(0, 0, 0);
+    }
+
+
+
     table {
+        margin: 15px 0px;
+        padding: 8px 5px;
         border-collapse: collapse;
         width: 100%;
     }
@@ -29,33 +45,43 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Todos</h1>
-    <table>
-    <tr>
-        <th>Feito</th>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th>Criada em</th>
-        <th class="fim">Ações</th>
-    </tr>
-    {% if tasks %}
-        {% for task in tasks %}
+    <div id="todos">
+        <ul id="Menu">
+            <li><a href="/addWork">+ Tarefa</a></li>
+        </ul>
+        <table>
         <tr>
-            <td>{{ task.done }}</td>
-            <td>{{ task.title }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.created_at }}</td>
-            <td class="fim"><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+            <th>Feito</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Criada em</th>
+            <th class="fim">Ações</th>
         </tr>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td>Vazio</td>
-            <td>Vazio</td>
-            <td>Vazio</td>
-            <td>Vazio</td>
-            <td class="fim">Vazio</td>
-        </tr>
-    {% endif %}
-    </table>
+        {% if tasks %}
+            {% for task in tasks %}
+            <form action="/actions" method="post">
+                <input type="hidden" name="id" value="{{task[0]}}">
+                <tr id="L{{task[0]}}">
+                    <td>{{ task[3] }}<input type="hidden" name="done" value="{{task[3]}}"></td>
+                    <td>{{ task[1] }}<input type="hidden" name="title" value="{{task[1]}}"></td>
+                    <td>{{ task[2] }}<input type="hidden" name="description" value="{{task[2]}}"></td>
+                    <td>{{ task[5] }}<input type="hidden" name="created_at" value="{{task[5]}}"></td>
+                    <td class="fim"><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                </tr>
+            </form>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>Vazio</td>
+                <td>Vazio</td>
+                <td>Vazio</td>
+                <td>Vazio</td>
+                <td class="fim">Vazio</td>
+            </tr>
+        {% endif %}
+        </table>
+        <div id="footer">
+            <p>Aqui e o final da pagina para colocar os gatos</p>
+        </div>
+    </div>
 {% endblock %} 
