@@ -11,9 +11,22 @@
             padding: 15px;
             border: 1px solid rgb(0, 0, 0);
         }
+        div#addWork::before {
+            content: "Adcionar Tarefa";
+            font-size: 125%;
+            font-weight: bold;
+            padding: 5px 15px;
+            background-color: white;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 8px;
+            position: relative;
+            top: -28px;
+        }
+
         div#addWork form input[name="title"] {
             width: 98.5%;
             margin: 10px 0px;
+            margin-top: 0px;
         }
         div#addWork form textarea {
             width: 98.7%;
@@ -25,17 +38,60 @@
             margin-bottom: 10px;
             display: block;
         }
+
+        div#addWork form div {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        div#addWork form div input {
+            width: 32.6%;
+            height: 27px;
+            float: left;
+        }
+
+        div#addWork form div a {
+            width: 100px;
+            padding: 5px 10%;
+            background-color: rgb(255, 0, 0);
+            border: 3px solid rgb(255, 0, 0);
+            border-radius: 8px;
+            font-size: 85%;
+            font-weight: bold;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            position: relative;
+            bottom: -6px;
+        }
+
+        div#addWork form div button {
+            width: 32.6%;
+            padding: 5px 0px;
+            background-color: rgb(0, 255, 0);
+            border: 3px solid rgb(0, 255, 0);
+            border-radius: 8px;
+            font-size: 85%;
+            font-weight: bold;
+            float: right;
+        }
+
+        div#addWork form div a:hover,
+        div#addWork form div button:hover {
+            border-color: rgb(0, 0, 0);
+        }
     </style>
 {% endblock %}
 
 {% block content %}
     <div id="addWork">
         <form action="execute" method="post">
-            <input type="text" name="title" required>
-            <textarea name="description" name="description"></textarea>
-            <input type="datetime-local" name="date" id="date">
-            <a href="/">Voltar</a>
-            <button type="submit" name="form" value="Add">Criar</button>
+            <input type="text" name="title" placeholder="Título" minlength="3" required>
+            <textarea name="description" name="description" placeholder="Descrição"></textarea>
+            <div>
+                <input type="datetime-local" name="date" id="date">
+                <a href="/">Voltar</a>
+                <button type="submit" name="form" value="Add">Criar</button>
+            </div>
         </form>
     </div>
 {% endblock %}
@@ -43,7 +99,7 @@
 {% block scripts %}
     <script>
         data = new Date()
-        data.getDate() + 1
+        data.setDate(data.getDate()+1)
         data = data.toISOString().substring(0, 19);
         document.getElementById("date").min = data
     </script>
