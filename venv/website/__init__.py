@@ -34,7 +34,7 @@ class web:
                 self.db.doneTask(request.form)
                 return redirect("/")
             elif request.form['form'] == "Edit":
-                return "editar"
+                return render_template("edit.html", task=self.db.getTask(request.form['id']))
             elif request.form['form'] == "Delet":
                 self.db.deletTask(request.form)
                 return redirect("/")

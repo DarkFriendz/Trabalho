@@ -30,8 +30,7 @@ class db:
                     dataTask = dataTask.replace(":", "")
                     if data >= dataTask:
                         tasks[id-1] = tasks[id-1]+('Expired',)
-        
-            print(tasks)
+            cur.close()
 
         return tasks
 
@@ -51,12 +50,14 @@ class db:
                     cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], None, request['date'], data, data))
                 else:
                     cur.execute('INSERT INTO todos (title, description, due_date, created_at, update_at) VALUES (?, ?, ?, ?, ?)', (request['title'], None, None, data, data))
+            cur.close()
 
     #Delet Values in Table
     def deletTask(self, request):
         with sql.connect(config[1]) as con:
             cur = con.cursor()
             cur.execute('DELETE FROM todos WHERE (id=?)', (request['id']))
+            cur.close()
 
     #Task Done
     def doneTask(self, request):
@@ -66,3 +67,14 @@ class db:
                 cur.execute('UPDATE todos SET done=? WHERE id=?', ("S", request['id']))
             else:
                 cur.execute('UPDATE todos SET done=? WHERE id=?', ("N", request['id']))
+            cur.close()
+
+    #Get Task
+    def getTask(self, id):
+        with sql.connect(config[1]) as con:
+            cur = con.cursor()
+            cur.execute('SELECT * FROM todos WHERE (id=?)', (id,))
+            task = cur.fetchone()
+            cur.close()
+            
+        return task

@@ -4,15 +4,15 @@
 
 {% block styles %}
     <style>
-        div#addWork {
+        div#editWork {
             width: 75%;
             margin: 75px auto;
             margin-bottom: 0px;
             padding: 15px;
             border: 1px solid rgb(0, 0, 0);
         }
-        div#addWork::before {
-            content: "Adcionar Tarefa";
+        div#editWork::before {
+            content: "Editar Tarefa";
             font-size: 125%;
             font-weight: bold;
             padding: 5px 15px;
@@ -23,12 +23,12 @@
             top: -28px;
         }
 
-        div#addWork form input[name="title"] {
+        div#editWork form input[name="title"] {
             width: 98.5%;
             margin: 10px 0px;
             margin-top: 0px;
         }
-        div#addWork form textarea {
+        div#editWork form textarea {
             width: 98.7%;
             max-width: 98.7%;
             min-width: 25%;
@@ -39,18 +39,18 @@
             display: block;
         }
 
-        div#addWork form div {
+        div#editWork form div {
             margin-bottom: 15px;
             text-align: center;
         }
 
-        div#addWork form div input {
+        div#editWork form div input {
             width: 32.6%;
             height: 27px;
             float: left;
         }
 
-        div#addWork form div a {
+        div#editWork form div a {
             width: 100px;
             padding: 5px 10%;
             background-color: rgb(255, 185, 0);
@@ -64,7 +64,7 @@
             bottom: -6px;
         }
 
-        div#addWork form div button {
+        div#editWork form div button {
             width: 32.6%;
             padding: 5px 0px;
             background-color: rgb(0, 255, 0);
@@ -75,18 +75,19 @@
             float: right;
         }
 
-        div#addWork form div a:hover,
-        div#addWork form div button:hover {
+        div#editWork form div a:hover,
+        div#editWork form div button:hover {
             border-color: rgb(0, 0, 0);
         }
     </style>
 {% endblock %}
 
 {% block content %}
-    <div id="addWork">
+    {{task}}
+    <div id="editWork">
         <form action="execute" method="post">
-            <input type="text" name="title" placeholder="Título" minlength="3" required>
-            <textarea name="description" name="description" placeholder="Descrição"></textarea>
+            <input type="text" name="title" placeholder="Título" minlength="3" value="{{task[1]}}" required>
+            <textarea name="description" name="description" placeholder="Descrição">{{task[2]}}</textarea>
             <div>
                 <input type="datetime-local" id="date">
                 <input type="hidden" id="dateLocal" name="date" value="">
